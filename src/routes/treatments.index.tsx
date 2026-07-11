@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
-import { treatments } from "@/lib/data";
+import { treatments, images } from "@/lib/data";
 
 export const Route = createFileRoute("/treatments/")({
   head: () => ({
@@ -40,8 +40,8 @@ function TreatmentsIndex() {
           <div className="col-span-12 md:col-span-8">
             <p className="eyebrow text-muted-foreground">Catalog · No.06</p>
             <h1 className="mt-5 text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight">
-              Six <span className="serif-italic">protocols.</span><br />
-              Written for one face <span className="serif-italic">at a time.</span>
+              Six <span className="serif-italic text-cobalt">protocols.</span><br />
+              Written for one face <span className="serif-italic text-forest">at a time.</span>
             </h1>
           </div>
           <div className="col-span-12 md:col-span-4 md:pb-4">
@@ -54,15 +54,44 @@ function TreatmentsIndex() {
         </div>
       </section>
 
+      <section className="px-6 md:px-10 py-16 md:py-20 grid grid-cols-12 gap-6">
+        <img
+          src={images.treatmentRoom}
+          alt="Inside the studio"
+          width={900}
+          height={520}
+          loading="lazy"
+          className="col-span-12 md:col-span-8 w-full h-[26vh] md:h-[38vh] object-cover rounded-2xl"
+        />
+        <img
+          src={images.ctaObject}
+          alt="Studio apothecary"
+          width={480}
+          height={520}
+          loading="lazy"
+          className="col-span-12 md:col-span-4 w-full h-[26vh] md:h-[38vh] object-cover rounded-2xl"
+        />
+      </section>
+
       <section className="t-list">
         {treatments.map((t) => (
           <Link
             key={t.slug}
             to="/treatments/$slug"
             params={{ slug: t.slug }}
-            className="t-row group block border-b border-hairline px-6 md:px-10 py-8 md:py-12 hover:bg-secondary/50 transition-colors"
+            className="t-row group flex items-center gap-6 md:gap-8 border-b border-hairline px-6 md:px-10 py-6 md:py-8 hover:bg-secondary/50 transition-colors"
           >
-            <div className="grid grid-cols-12 gap-6 items-center">
+            <div className="w-20 h-20 md:w-28 md:h-28 rounded-xl overflow-hidden shrink-0 bg-muted">
+              <img
+                src={t.image}
+                alt={t.name}
+                width={224}
+                height={224}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="grid grid-cols-12 gap-6 items-center flex-1 min-w-0">
               <div className="col-span-2 md:col-span-1">
                 <span className="serif-italic text-blush text-lg md:text-xl">{t.number}</span>
               </div>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { treatments } from "@/lib/data";
+import { treatments, images } from "@/lib/data";
 import { MagneticButton } from "@/components/MagneticButton";
 
 export const Route = createFileRoute("/treatments/$slug")({
@@ -45,7 +45,7 @@ function TreatmentDetail() {
         <div className="grid grid-cols-12 gap-8 mt-10 items-end">
           <div className="col-span-12 md:col-span-8">
             <p className="serif-italic text-blush">No. {t.number}</p>
-            <h1 className="mt-3 text-5xl md:text-7xl leading-[0.95]">
+            <h1 className="mt-3 text-5xl md:text-7xl leading-[0.95] text-cobalt">
               {t.name}
             </h1>
             <p className="mt-5 serif-italic text-xl md:text-2xl text-muted-foreground max-w-xl">
@@ -91,7 +91,7 @@ function TreatmentDetail() {
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow text-muted-foreground">Results</p>
-            <h2 className="serif-italic mt-3 text-4xl">What to expect</h2>
+            <h2 className="serif-italic mt-3 text-4xl text-forest">What to expect</h2>
           </div>
           <ul className="col-span-12 md:col-span-7 divide-y divide-hairline">
             {t.results.map((r: string, i: number) => (
@@ -105,12 +105,22 @@ function TreatmentDetail() {
       </section>
 
       <section className="px-6 md:px-10 py-16 md:py-24 border-t border-hairline">
-        <div className="grid grid-cols-12 gap-10">
+        <div className="grid grid-cols-12 gap-10 items-center">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow text-muted-foreground">Aftercare</p>
           </div>
-          <div className="col-span-12 md:col-span-7">
+          <div className="col-span-12 md:col-span-4">
             <p className="text-lg md:text-xl leading-relaxed">{t.aftercare}</p>
+          </div>
+          <div className="col-span-12 md:col-span-4">
+            <img
+              src={images.treatmentSkin}
+              alt="Aftercare ritual"
+              width={640}
+              height={480}
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover rounded-2xl"
+            />
           </div>
         </div>
       </section>
