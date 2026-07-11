@@ -199,6 +199,7 @@ export const journal = [
     excerpt: "Why the most expensive treatment plans are the ones that say no to most of the menu.",
     date: "March 2026",
     read: "6 min read",
+    image: treatmentSkin,
   },
   {
     slug: "why-consultation-matters",
@@ -206,6 +207,7 @@ export const journal = [
     excerpt: "The first sixty minutes determine the next twenty years of your skin. Here is how we use them.",
     date: "February 2026",
     read: "8 min read",
+    image: treatmentRoom,
   },
   {
     slug: "aftercare-is-the-treatment",
@@ -213,6 +215,7 @@ export const journal = [
     excerpt: "What you do in the seventy-two hours after a session decides the result. A studio guide.",
     date: "January 2026",
     read: "5 min read",
+    image: treatmentSerum,
   },
 ];
 

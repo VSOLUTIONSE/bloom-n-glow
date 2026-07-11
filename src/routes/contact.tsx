@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
 import { MagneticButton } from "@/components/MagneticButton";
 import { useAlert } from "@/components/ui/beautiful-alert";
+import { images } from "@/lib/data";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -75,13 +76,24 @@ function Contact() {
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12">
         <p className="c-rise eyebrow text-muted-foreground">Begin</p>
         <h1 className="c-rise mt-5 text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl">
-          A sixty-minute<br /><span className="serif-italic">consultation.</span>
+          A sixty-minute<br /><span className="serif-italic text-cobalt">consultation.</span>
         </h1>
         <p className="c-rise mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
           Tell us a little about what you're considering. We'll respond within
           one business day with available consultation windows. No pressure
           to book.
         </p>
+      </section>
+
+      <section className="c-rise px-6 md:px-10 pb-4">
+        <img
+          src={images.treatmentRoom}
+          alt="A quiet corner of the studio"
+          width={1600}
+          height={640}
+          loading="lazy"
+          className="w-full h-[32vh] md:h-[40vh] object-cover rounded-2xl"
+        />
       </section>
 
       <section className="px-6 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-10 border-t border-hairline">
@@ -117,9 +129,17 @@ function Contact() {
         </div>
 
         <aside className="col-span-12 md:col-span-4 md:col-start-9 space-y-10 md:pt-2">
+          <img
+            src={images.treatmentSkin}
+            alt="Studio apothecary detail"
+            width={640}
+            height={480}
+            loading="lazy"
+            className="w-full aspect-[4/3] object-cover rounded-2xl"
+          />
           <div>
             <p className="eyebrow text-muted-foreground">Studio</p>
-            <p className="mt-3 serif-italic text-2xl leading-snug">
+            <p className="mt-3 serif-italic text-2xl leading-snug text-forest">
               218 Mercer Street<br />
               Arts District
             </p>

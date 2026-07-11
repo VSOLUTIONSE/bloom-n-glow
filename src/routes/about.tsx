@@ -48,7 +48,7 @@ function About() {
         <p className="eyebrow text-muted-foreground">About the studio</p>
         <h1 className="mt-5 text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl">
           A small studio<br />
-          <span className="serif-italic">with long memory.</span>
+          <span className="serif-italic text-cobalt">with long memory.</span>
         </h1>
       </section>
 
@@ -86,25 +86,37 @@ function About() {
       </section>
 
       {/* PHILOSOPHY */}
-      <section className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
+      <section id="philosophy" className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
         <div data-reveal className="mb-14">
           <p className="eyebrow text-muted-foreground">Philosophy</p>
           <h2 className="mt-4 text-4xl md:text-6xl">
-            Four <span className="serif-italic">principles.</span> No exceptions.
+            Four <span className="serif-italic text-forest">principles.</span> No exceptions.
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {philosophy.map((p) => (
-            <div data-reveal key={p.n} className="border-t border-hairline pt-6">
-              <div className="flex items-baseline gap-4">
-                <span className="serif-italic text-blush text-xl">{p.n}</span>
-                <h3 className="text-2xl md:text-3xl">{p.label}</h3>
+        <div className="grid grid-cols-12 gap-10 md:gap-12 items-start">
+          <div data-reveal className="col-span-12 md:col-span-5">
+            <img
+              src={images.treatmentWellness}
+              alt="Studio ritual detail"
+              width={960}
+              height={1200}
+              loading="lazy"
+              className="w-full aspect-[4/5] object-cover rounded-2xl"
+            />
+          </div>
+          <div className="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
+            {philosophy.map((p) => (
+              <div data-reveal key={p.n} className="border-t border-hairline pt-6">
+                <div className="flex items-baseline gap-4">
+                  <span className="serif-italic text-blush text-xl">{p.n}</span>
+                  <h3 className="text-2xl md:text-3xl">{p.label}</h3>
+                </div>
+                <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-md">
+                  {p.body}
+                </p>
               </div>
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-md">
-                {p.body}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -114,7 +126,7 @@ function About() {
           <div>
             <p className="eyebrow text-muted-foreground">The floor · Four practitioners</p>
             <h2 className="mt-4 text-4xl md:text-6xl">
-              People who <span className="serif-italic">stay.</span>
+              People who <span className="serif-italic text-blush">stay.</span>
             </h2>
           </div>
           <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
