@@ -1,0 +1,149 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-bone: var(--bone);
+  --color-ink: var(--ink);
+  --color-blush: var(--blush);
+  --color-rose: var(--rose);
+  --color-champagne: var(--champagne);
+  --color-hairline: var(--hairline);
+  --color-primary-base: var(--primary-base);
+  --color-primary-25: var(--primary-25);
+  --color-primary-50: var(--primary-50);
+  --color-primary-75: var(--primary-75);
+  --color-primary-dark-25: var(--primary-dark-25);
+  --color-primary-dark-50: var(--primary-dark-50);
+
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand palette — vivid hot pink #F60286 with 25% / 50% variants */
+  --bone: oklch(0.98 0.008 345);
+  --ink: oklch(0.15 0.02 345);
+  --blush: oklch(0.632 0.256 359.0);       /* #F60286 base */
+  --rose: oklch(0.759 0.166 350.7);        /* 50% tint #FA80C2 */
+  --champagne: oklch(0.844 0.101 348.4);   /* 75% tint #FCBFE0 */
+  --hairline: oklch(0.88 0.04 350.0);
+
+  /* Primary scale */
+  --primary-base: oklch(0.632 0.256 359.0);       /* #F60286 */
+  --primary-25: oklch(0.672 0.229 358.4);           /* 25% lighter */
+  --primary-50: oklch(0.759 0.166 350.7);           /* 50% lighter */
+  --primary-75: oklch(0.844 0.101 348.4);           /* 75% lighter */
+  --primary-dark-25: oklch(0.512 0.208 359.0);      /* 25% darker */
+  --primary-dark-50: oklch(0.370 0.150 358.3);      /* 50% darker */
+
+  --background: var(--bone);
+  --foreground: var(--ink);
+  --card: oklch(0.985 0.012 345);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.985 0.012 345);
+  --popover-foreground: var(--ink);
+  --primary: var(--primary-base);
+  --primary-foreground: oklch(0.98 0.01 345);
+  --secondary: var(--primary-75);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.92 0.02 345);
+  --muted-foreground: oklch(0.45 0.04 345);
+  --accent: var(--blush);
+  --accent-foreground: var(--primary-foreground);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: var(--bone);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--blush);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--blush);
+    color: var(--ink);
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility hairline {
+  height: 1px;
+  background-color: var(--hairline);
+  width: 100%;
+}
+
+@utility serif-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.char-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.05;
+}
+.char-mask > span {
+  display: inline-block;
+  will-change: transform;
+}
