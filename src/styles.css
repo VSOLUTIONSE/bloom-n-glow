@@ -37,6 +37,10 @@
   --color-rose: var(--rose);
   --color-champagne: var(--champagne);
   --color-hairline: var(--hairline);
+  --color-lime: var(--lime);
+  --color-lime-ink: var(--lime-ink);
+  --color-forest: var(--forest);
+  --color-cobalt: var(--cobalt);
   --color-primary-base: var(--primary-base);
   --color-primary-25: var(--primary-25);
   --color-primary-50: var(--primary-50);
@@ -44,41 +48,45 @@
   --color-primary-dark-25: var(--primary-dark-25);
   --color-primary-dark-50: var(--primary-dark-50);
 
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.9rem;
 
-  /* Brand palette — vivid hot pink #F60286 with 25% / 50% variants */
-  --bone: oklch(0.98 0.008 345);
-  --ink: oklch(0.15 0.02 345);
-  --blush: oklch(0.632 0.256 359.0);       /* #F60286 base */
-  --rose: oklch(0.759 0.166 350.7);        /* 50% tint #FA80C2 */
-  --champagne: oklch(0.844 0.101 348.4);   /* 75% tint #FCBFE0 */
-  --hairline: oklch(0.88 0.04 350.0);
+  /* Brand palette — glow-clinic: chartreuse, ink, deep purple, forest, cobalt */
+  --bone: oklch(0.975 0.014 92);
+  --ink: oklch(0.16 0.015 285);
+  --blush: oklch(0.56 0.24 302);           /* electric violet accent */
+  --rose: oklch(0.7 0.17 302);             /* 50% tint */
+  --champagne: oklch(0.85 0.09 302);       /* 75% tint */
+  --hairline: oklch(0.9 0.02 90);
+  --lime: oklch(0.92 0.21 124);            /* chartreuse band/CTA */
+  --lime-ink: oklch(0.16 0.015 285);
+  --forest: oklch(0.26 0.045 165);         /* deep green section */
+  --cobalt: oklch(0.4 0.17 265);           /* electric blue panel */
 
   /* Primary scale */
-  --primary-base: oklch(0.632 0.256 359.0);       /* #F60286 */
-  --primary-25: oklch(0.672 0.229 358.4);           /* 25% lighter */
-  --primary-50: oklch(0.759 0.166 350.7);           /* 50% lighter */
-  --primary-75: oklch(0.844 0.101 348.4);           /* 75% lighter */
-  --primary-dark-25: oklch(0.512 0.208 359.0);      /* 25% darker */
-  --primary-dark-50: oklch(0.370 0.150 358.3);      /* 50% darker */
+  --primary-base: oklch(0.56 0.24 302);
+  --primary-25: oklch(0.61 0.22 302);
+  --primary-50: oklch(0.7 0.17 302);
+  --primary-75: oklch(0.85 0.09 302);
+  --primary-dark-25: oklch(0.46 0.2 302);
+  --primary-dark-50: oklch(0.35 0.15 302);
 
   --background: var(--bone);
   --foreground: var(--ink);
-  --card: oklch(0.985 0.012 345);
+  --card: oklch(1 0 0);
   --card-foreground: var(--ink);
-  --popover: oklch(0.985 0.012 345);
+  --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
   --primary: var(--primary-base);
-  --primary-foreground: oklch(0.98 0.01 345);
-  --secondary: var(--primary-75);
+  --primary-foreground: oklch(0.98 0.01 302);
+  --secondary: var(--lime);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.92 0.02 345);
-  --muted-foreground: oklch(0.45 0.04 345);
+  --muted: oklch(0.94 0.015 90);
+  --muted-foreground: oklch(0.45 0.02 285);
   --accent: var(--blush);
   --accent-foreground: var(--primary-foreground);
   --destructive: oklch(0.55 0.18 25);
@@ -107,12 +115,12 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
-    background-color: var(--blush);
+    background-color: var(--lime);
     color: var(--ink);
   }
 }
@@ -120,9 +128,9 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.6875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 @utility hairline {
@@ -133,8 +141,9 @@
 
 @utility serif-italic {
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .char-mask {

@@ -11,12 +11,14 @@ type Props = {
   slides: LuminaSlide[];
   autoSlideMs?: number;
   className?: string;
+  showOverlayText?: boolean;
 };
 
 export function LuminaInteractiveList({
   slides,
   autoSlideMs = 6000,
   className = "",
+  showOverlayText = true,
 }: Props) {
   const [index, setIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -95,64 +97,68 @@ export function LuminaInteractiveList({
         }}
       />
 
-      {/* Counter (top-left) */}
-      <div className="absolute top-6 left-6 md:top-8 md:left-8 flex items-center gap-3 text-bone/90">
-        <span className="font-mono text-xs tracking-[0.22em]">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <span className="block w-8 h-px bg-bone/40" />
-        <span className="font-mono text-xs tracking-[0.22em] text-bone/60">
-          {String(slides.length).padStart(2, "0")}
-        </span>
-      </div>
+      {showOverlayText && (
+        <>
+          {/* Counter (top-left) */}
+          <div className="absolute top-6 left-6 md:top-8 md:left-8 flex items-center gap-3 text-bone/90">
+            <span className="font-mono text-xs tracking-[0.22em]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="block w-8 h-px bg-bone/40" />
+            <span className="font-mono text-xs tracking-[0.22em] text-bone/60">
+              {String(slides.length).padStart(2, "0")}
+            </span>
+          </div>
 
-      {/* Slide nav (right side) */}
-      <div className="absolute top-1/2 right-4 md:right-8 -translate-y-1/2 flex flex-col gap-3 z-10">
-        {slides.map((s, i) => {
-          const active = i === index;
-          return (
-            <button
-              key={s.title}
-              onClick={() => goTo(i)}
-              className="group flex items-center gap-3 text-right"
-              aria-label={`Show ${s.title}`}
+          {/* Slide nav (right side) */}
+          <div className="absolute top-1/2 right-4 md:right-8 -translate-y-1/2 flex flex-col gap-3 z-10">
+            {slides.map((s, i) => {
+              const active = i === index;
+              return (
+                <button
+                  key={s.title}
+                  onClick={() => goTo(i)}
+                  className="group flex items-center gap-3 text-right"
+                  aria-label={`Show ${s.title}`}
+                >
+                  <span
+                    className={`hidden md:inline text-[0.7rem] tracking-[0.22em] uppercase transition-colors duration-300 ${
+                      active ? "text-bone" : "text-bone/45 group-hover:text-bone/80"
+                    }`}
+                  >
+                    {s.title}
+                  </span>
+                  <span className="relative block w-10 h-px bg-bone/25 overflow-hidden">
+                    <span
+                      className="absolute inset-y-0 left-0 bg-blush"
+                      style={{
+                        width: active ? `${progress * 100}%` : "0%",
+                        transition: active ? "none" : "width 0.3s ease",
+                      }}
+                    />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Title + description (bottom-left) */}
+          <div className="absolute left-6 md:left-10 bottom-8 md:bottom-12 max-w-xl">
+            <h3
+              key={`t-${index}`}
+              className="serif-italic text-bone text-4xl md:text-6xl leading-[1.02] tracking-tight animate-[luminaIn_900ms_cubic-bezier(0.22,1,0.36,1)_both]"
             >
-              <span
-                className={`hidden md:inline text-[0.7rem] tracking-[0.22em] uppercase transition-colors duration-300 ${
-                  active ? "text-bone" : "text-bone/45 group-hover:text-bone/80"
-                }`}
-              >
-                {s.title}
-              </span>
-              <span className="relative block w-10 h-px bg-bone/25 overflow-hidden">
-                <span
-                  className="absolute inset-y-0 left-0 bg-blush"
-                  style={{
-                    width: active ? `${progress * 100}%` : "0%",
-                    transition: active ? "none" : "width 0.3s ease",
-                  }}
-                />
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Title + description (bottom-left) */}
-      <div className="absolute left-6 md:left-10 bottom-8 md:bottom-12 max-w-xl">
-        <h3
-          key={`t-${index}`}
-          className="serif-italic text-bone text-4xl md:text-6xl leading-[1.02] tracking-tight animate-[luminaIn_900ms_cubic-bezier(0.22,1,0.36,1)_both]"
-        >
-          {current.title}
-        </h3>
-        <p
-          key={`d-${index}`}
-          className="mt-4 max-w-md text-sm md:text-base text-bone/75 leading-relaxed animate-[luminaIn_900ms_200ms_cubic-bezier(0.22,1,0.36,1)_both]"
-        >
-          {current.description}
-        </p>
-      </div>
+              {current.title}
+            </h3>
+            <p
+              key={`d-${index}`}
+              className="mt-4 max-w-md text-sm md:text-base text-bone/75 leading-relaxed animate-[luminaIn_900ms_200ms_cubic-bezier(0.22,1,0.36,1)_both]"
+            >
+              {current.description}
+            </p>
+          </div>
+        </>
+      )}
 
       <style>{`
         @keyframes luminaIn {

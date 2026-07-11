@@ -7,7 +7,7 @@ type Props = {
   to?: string;
   href?: string;
   onClick?: () => void;
-  variant?: "blush" | "ink" | "ghost";
+  variant?: "blush" | "ink" | "ghost" | "lime";
   className?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -48,13 +48,15 @@ export function MagneticButton({
   };
 
   const base =
-    "relative inline-flex items-center justify-center px-7 py-3.5 text-[0.78rem] tracking-[0.18em] uppercase font-medium transition-colors rounded-full";
+    "relative inline-flex items-center justify-center px-7 py-3.5 text-[0.78rem] tracking-[0.16em] uppercase font-bold transition-colors rounded-full";
   const v =
     variant === "blush"
-      ? "bg-blush text-ink hover:bg-ink hover:text-bone"
-      : variant === "ink"
-        ? "bg-ink text-bone hover:bg-blush hover:text-ink"
-        : "border border-current hover:bg-ink hover:text-bone hover:border-ink";
+      ? "bg-blush text-bone hover:bg-ink hover:text-bone"
+      : variant === "lime"
+        ? "bg-lime text-lime-ink hover:bg-ink hover:text-lime"
+        : variant === "ink"
+          ? "bg-ink text-bone hover:bg-lime hover:text-lime-ink"
+          : "border border-current hover:bg-ink hover:text-bone hover:border-ink";
 
   const content = <span ref={inner}>{children}</span>;
   const classes = `${base} ${v} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`;

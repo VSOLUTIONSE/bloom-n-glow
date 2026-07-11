@@ -71,10 +71,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Exquisite Medspa - Refined aesthetics, quiet confidence" },
+      { title: "Exquisite Medspa — Looking good, on repeat." },
       { name: "description", content: "A private aesthetic studio for facial architecture, precision injectables, laser renewal, and bespoke wellness rituals. Results worth returning for." },
       { name: "author", content: "Exquisite Medspa" },
-      { property: "og:title", content: "Exquisite Medspa - Refined aesthetics, quiet confidence" },
+      { property: "og:title", content: "Exquisite Medspa — Looking good, on repeat." },
       { property: "og:description", content: "A private aesthetic studio. Physician-led, restraint-first, built for ten years not ten minutes." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter+Tight:wght@300;400;500;600;700&display=swap",
       },
     ],
   }),

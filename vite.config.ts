@@ -11,8 +11,13 @@ export default defineConfig({
     tanstackStart({
       server: { entry: "src/server.ts" },
     }),
-    nitro({ preset: "vercel" }),
+    nitro({ preset: "node-server" }),
     viteReact(),
     tsconfigPaths(),
   ],
+  server: {
+    host: "0.0.0.0",
+    port: 5000,
+    allowedHosts: true,
+  },
 });
