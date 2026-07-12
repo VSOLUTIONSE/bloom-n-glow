@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { z } from "zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { treatments } from "@/lib/data";
+import { treatments, images } from "@/lib/data";
 import { MagneticButton } from "@/components/MagneticButton";
 import { useAlert } from "@/components/ui/beautiful-alert";
 import { sendBookingToMake } from "@/lib/api/booking.functions";
@@ -255,6 +255,29 @@ function BookingPage() {
           Choose your protocol and a preferred window. All sessions are held
           in our private studio in the Arts District.
         </p>
+      </section>
+
+      <section className="px-6 md:px-10 pb-16 md:pb-24">
+        <div className="grid grid-cols-12 gap-6 items-stretch">
+          <img
+            src={images.treatmentRoom}
+            alt="Inside the studio"
+            width={900}
+            height={520}
+            loading="lazy"
+            className="col-span-12 md:col-span-7 w-full h-[28vh] md:h-[40vh] object-cover rounded-2xl"
+          />
+          <div className="col-span-12 md:col-span-5 flex flex-col justify-center">
+            <p className="text-2xl md:text-4xl leading-[1.15]">
+              A private room, <span className="serif-italic text-cobalt">good light,</span>{" "}
+              and a specialist who has done this <span className="serif-italic text-forest">exactly once before</span> — the way you like it.
+            </p>
+            <p className="mt-6 text-sm text-muted-foreground max-w-sm">
+              Every appointment is held one-on-one, by invitation, in the same
+              studio you see here.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="px-6 md:px-10 py-10 md:py-14 border-t border-hairline">

@@ -33,7 +33,6 @@ export function SiteFooter() {
               <p className="text-bone/45">Studio</p>
               <Link to="/about" className="block hover:text-bone">About</Link>
               <Link to="/treatments" className="block hover:text-bone">Treatments</Link>
-              <Link to="/journal" className="block hover:text-bone">Journal</Link>
               <Link to="/contact" className="block hover:text-bone">Contact</Link>
             </div>
             <div className="space-y-3">
@@ -47,7 +46,6 @@ export function SiteFooter() {
             <div className="space-y-3">
               <p className="text-bone/45">Elsewhere</p>
               <a className="block hover:text-bone" href="#">Instagram</a>
-              <a className="block hover:text-bone" href="#">Journal</a>
               <a
                 href="mailto:studio@exquisitemedspa.co"
                 className="block normal-case tracking-normal hover:text-bone lowercase"

@@ -192,33 +192,6 @@ export const team = [
   },
 ];
 
-export const journal = [
-  {
-    slug: "quiet-science-of-restraint",
-    title: "The quiet science of restraint",
-    excerpt: "Why the most expensive treatment plans are the ones that say no to most of the menu.",
-    date: "March 2026",
-    read: "6 min read",
-    image: treatmentSkin,
-  },
-  {
-    slug: "why-consultation-matters",
-    title: "Why your consultation matters more than your treatment",
-    excerpt: "The first sixty minutes determine the next twenty years of your skin. Here is how we use them.",
-    date: "February 2026",
-    read: "8 min read",
-    image: treatmentRoom,
-  },
-  {
-    slug: "aftercare-is-the-treatment",
-    title: "Aftercare is the treatment",
-    excerpt: "What you do in the seventy-two hours after a session decides the result. A studio guide.",
-    date: "January 2026",
-    read: "5 min read",
-    image: treatmentSerum,
-  },
-];
-
 export const values = [
   { label: "Discretion", body: "A private studio. Single appointments. No overlap, no waiting room culture." },
   { label: "Precision", body: "Physician-led mapping. Calibrated technology. Nothing administered without measurement." },
