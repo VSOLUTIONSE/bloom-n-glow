@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const links = [
+  { to: "/", label: "Home" },
   { to: "/treatments", label: "Treatments" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
@@ -19,7 +20,7 @@ export function SiteNav() {
         <div className="col-span-6 md:col-span-3">
           <Link to="/" className="flex items-center gap-1.5 group">
             <span className="serif-italic text-2xl md:text-[1.7rem] tracking-tight normal-case lowercase text-ink">
-              exquisite
+              bloom & glow
             </span>
             <span className="mt-1 w-1.5 h-1.5 rounded-full bg-blush" />
           </Link>
@@ -27,7 +28,7 @@ export function SiteNav() {
 
         <nav className="hidden md:flex col-span-6 justify-center gap-9 font-semibold">
           {links.slice(0, -1).map((l) => {
-            const active = path === l.to || (l.to !== "/" && path.startsWith(l.to));
+            const active = l.to === "/" ? path === "/" : path.startsWith(l.to);
             return (
               <Link key={l.to} to={l.to as any} className="relative py-1 transition-colors hover:text-ink">
                 <span className={active ? "text-ink" : "text-muted-foreground"}>{l.label}</span>
@@ -74,8 +75,8 @@ export function SiteNav() {
                   {l.label}
                 </Link>
               ))}
-              <a href="mailto:studio@exquisitemedspa.co" className="normal-case tracking-normal text-xs text-muted-foreground">
-                studio@exquisitemedspa.co
+              <a href="mailto:hello@bloomandglow.ng" className="normal-case tracking-normal text-xs text-muted-foreground">
+                hello@bloomandglow.ng
               </a>
             </div>
           </motion.div>

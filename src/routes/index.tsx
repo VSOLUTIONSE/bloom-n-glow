@@ -18,9 +18,9 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Exquisite Medspa — Looking good, on repeat." },
-      { name: "description", content: "A private aesthetic studio for facial architecture, precision injectables, laser renewal, and bespoke wellness rituals." },
-      { property: "og:title", content: "Exquisite Medspa" },
+      { title: "Bloom & Glow — Looking good, on repeat." },
+      { name: "description", content: "Lagos' premier private aesthetic studio for facial architecture, precision injectables, laser renewal, and bespoke wellness rituals." },
+      { property: "og:title", content: "Bloom & Glow" },
       { property: "og:description", content: "Looking good, on repeat. Results worth returning for." },
     ],
   }),
@@ -152,7 +152,7 @@ function Home() {
           <div className="absolute inset-x-0 bottom-0 p-6 md:p-14 pointer-events-none">
             <p className="hero-eyebrow eyebrow inline-flex items-center gap-2 rounded-full bg-bone/90 text-ink px-4 py-1.5 pointer-events-auto">
               <span className="w-1.5 h-1.5 rounded-full bg-lime" />
-              Aesthetic studio · By appointment
+              Aesthetic studio · Lagos, Nigeria
             </p>
             <h1 className="mt-5 text-white text-[2.75rem] sm:text-6xl md:text-[6rem] leading-[0.92] tracking-tight font-bold max-w-4xl">
               <SplitText as="span">Looking good,</SplitText>
@@ -163,9 +163,10 @@ function Home() {
             </h1>
             <div className="mt-7 flex flex-wrap items-end justify-between gap-6 pointer-events-auto">
               <p className="hero-paragraph text-sm md:text-base leading-[1.6] text-bone/85 max-w-md">
-                A private studio for the discerning. Physician-led plans across
-                facial architecture, precision injectables, laser renewal, and
-                bespoke wellness — every protocol written for one face only.
+                Lagos' most private studio for the discerning. Physician-led plans
+                across facial architecture, precision injectables, laser renewal for
+                melanin-rich skin, and bespoke wellness — every protocol written
+                for one face only.
               </p>
               <div className="hero-cta">
                 <MagneticButton to="/booking" variant="lime">
@@ -180,7 +181,7 @@ function Home() {
       {/* LIME BAND — compliments, incoming */}
       <section id="compliments" className="px-4 md:px-10 pt-10 md:pt-14 pb-14 md:pb-20">
         <div className="rounded-[1.75rem] bg-lime text-lime-ink px-6 md:px-12 py-12 md:py-16">
-          <p className="eyebrow text-center text-lime-ink/60">Our own regulars say it best</p>
+          <p className="eyebrow text-center text-lime-ink/60">Our regulars say it best</p>
           <h2 className="mt-4 text-center text-3xl sm:text-5xl md:text-6xl leading-[1.02] font-bold tracking-tight">
             Compliments, incoming.
           </h2>
@@ -353,7 +354,7 @@ function Home() {
               </div>
               <p className="serif-italic text-xl md:text-2xl leading-snug text-lime">
                 {i === 0
-                  ? "Exquisite taught me to invest in myself — I have such clarity in my skin, I feel incredible."
+                  ? "Bloom & Glow taught me to invest in myself — I have such clarity in my skin, I feel incredible."
                   : "Every visit gave me a little more confidence. I've never felt more like myself."}
               </p>
             </div>

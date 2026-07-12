@@ -8,9 +8,9 @@ import { images } from "@/lib/data";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact - Exquisite Medspa" },
-      { name: "description", content: "Begin with a sixty-minute consultation. Private studio, by appointment, Tuesday through Saturday." },
-      { property: "og:title", content: "Contact - Exquisite Medspa" },
+      { title: "Contact - Bloom & Glow" },
+      { name: "description", content: "Begin with a sixty-minute consultation. Private studio in Lagos, by appointment, Tuesday through Saturday." },
+      { property: "og:title", content: "Contact - Bloom & Glow" },
       { property: "og:description", content: "Book a consultation or send a private note." },
     ],
   }),
@@ -99,7 +99,7 @@ function Contact() {
       <section className="px-6 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-10 border-t border-hairline">
         <div className="col-span-12 md:col-span-7">
           <form onSubmit={handleSubmit} className="space-y-8">
-            <input type="hidden" name="subject" value="New Exquisite Medspa enquiry" />
+            <input type="hidden" name="subject" value="New Bloom & Glow enquiry" />
             <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -140,24 +140,24 @@ function Contact() {
           <div>
             <p className="eyebrow text-muted-foreground">Studio</p>
             <p className="mt-3 serif-italic text-2xl leading-snug text-forest">
-              218 Mercer Street<br />
-              Arts District
+              14B Adeola Odeku Street<br />
+              Victoria Island, Lagos
             </p>
             <p className="mt-2 text-sm text-muted-foreground">By appointment, Tuesday — Saturday</p>
           </div>
           <div>
             <p className="eyebrow text-muted-foreground">Direct</p>
-            <a href="mailto:studio@exquisitemedspa.co" className="mt-3 block serif-italic text-xl text-blush hover:text-ink transition-colors">
-              studio@exquisitemedspa.co
+            <a href="mailto:hello@bloomandglow.ng" className="mt-3 block serif-italic text-xl text-blush hover:text-ink transition-colors">
+              hello@bloomandglow.ng
             </a>
-            <a href="tel:+12120000000" className="mt-2 block text-sm text-muted-foreground hover:text-ink transition-colors">
-              +1 (212) 000-0000
+            <a href="tel:+2349000000000" className="mt-2 block text-sm text-muted-foreground hover:text-ink transition-colors">
+              +234 (0) 900 000 0000
             </a>
           </div>
           <div>
             <p className="eyebrow text-muted-foreground">Press</p>
-            <a href="mailto:press@exquisitemedspa.co" className="mt-3 block text-sm hover:text-blush transition-colors">
-              press@exquisitemedspa.co
+            <a href="mailto:press@bloomandglow.ng" className="mt-3 block text-sm hover:text-blush transition-colors">
+              press@bloomandglow.ng
             </a>
           </div>
         </aside>

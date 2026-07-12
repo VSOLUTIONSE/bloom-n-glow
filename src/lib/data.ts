@@ -41,12 +41,12 @@ export const treatments: Treatment[] = [
     name: "Signature Facial Architecture",
     tagline: "Structural sculpting through lymphatic and myofascial work.",
     duration: "90 minutes",
-    from: "From $340",
+    from: "From ₦280,000",
     image: treatmentFacial,
     intro:
-      "A ninety minute ritual that re-sculpts the face from the inside out, working the deep tissue planes our practitioners trained in Paris and Tokyo have spent careers refining.",
+      "A ninety-minute ritual that re-sculpts the face from the inside out, working the deep tissue planes our practitioners trained in Lagos and Abuja have spent careers refining.",
     what:
-      "Beginning with a warm enzymatic cleanse, your aesthetician moves through lymphatic drainage along the jaw and neck, then engages buccal release work to soften tension held in the masseter and temporalis. The session closes with a cold quartz finish.",
+      "Beginning with a warm enzymatic cleanse, your aesthetician moves through lymphatic drainage along the jaw and neck, then engages buccal release work to soften tension held in the masseter and temporalis. The session closes with a cold jade finish.",
     results: [
       "Defined jawline and lifted cheek plane",
       "Visible reduction in puffiness around the eyes",
@@ -62,12 +62,12 @@ export const treatments: Treatment[] = [
     name: "Precision Injectables",
     tagline: "Restraint, in micro-doses. Never the cliché.",
     duration: "60 minutes",
-    from: "From $480",
+    from: "From ₦395,000",
     image: treatmentSerum,
     intro:
       "Our injectable philosophy is built around a single principle: you should not look done. You should look rested, considered, and unmistakably yourself.",
     what:
-      "Every session begins with a facial mapping consultation. Dr. Vance personally designs your plan, working in fractional doses placed with neuromodulator precision. We use only the formulations we would choose for ourselves.",
+      "Every session begins with a facial mapping consultation. Dr. Adaeze personally designs your plan, working in fractional doses placed with neuromodulator precision. We use only the formulations we would choose for ourselves.",
     results: [
       "Softened expression lines without frozen movement",
       "Subtle volume restoration in temples and midface",
@@ -83,12 +83,12 @@ export const treatments: Treatment[] = [
     name: "Laser Renewal",
     tagline: "Wavelength-tuned correction. Quiet, calibrated, exact.",
     duration: "75 minutes",
-    from: "From $520",
+    from: "From ₦430,000",
     image: treatmentSkin,
     intro:
-      "Our laser program is built on the platforms used by the most discerning dermatology clinics in Switzerland and Seoul. Each session is calibrated to your specific skin signature.",
+      "Our laser program is built on platforms used by the most discerning dermatology clinics in Lagos and Nairobi. Each session is calibrated to your specific melanin-rich skin signature.",
     what:
-      "After a topical preparation, your specialist works through targeted passes addressing pigmentation, vascular irregularities, and textural concerns. Cooling between passes keeps the experience gentle.",
+      "After a topical preparation, your specialist works through targeted passes addressing hyperpigmentation, post-inflammatory marks, and textural concerns common to darker skin tones. Cooling between passes keeps the experience gentle.",
     results: [
       "Even tone, reduced hyperpigmentation",
       "Closed pores and refined surface texture",
@@ -104,12 +104,12 @@ export const treatments: Treatment[] = [
     name: "Skin Resurfacing Ritual",
     tagline: "A studied acid exchange. Cellular turnover without compromise.",
     duration: "60 minutes",
-    from: "From $290",
+    from: "From ₦240,000",
     image: treatmentFacial,
     intro:
       "A precisely layered chemical exchange that resets the skin's renewal cycle. Designed for those who want correction without recovery time.",
     what:
-      "Mandelic, lactic, and salicylic acids are layered to your skin's tolerance, neutralized at the exact threshold, and followed by a restorative mask sequence using growth-factor and peptide infusions.",
+      "Mandelic, lactic, and salicylic acids are layered to your skin's tolerance, neutralised at the exact threshold, and followed by a restorative mask sequence using growth-factor and peptide infusions.",
     results: [
       "Refined surface and immediate clarity",
       "Smoothed fine lines and acne scarring",
@@ -125,12 +125,12 @@ export const treatments: Treatment[] = [
     name: "Body Contour Sculpt",
     tagline: "Non-invasive contouring through radiofrequency and lymphatic work.",
     duration: "90 minutes",
-    from: "From $420",
+    from: "From ₦345,000",
     image: treatmentWellness,
     intro:
       "Targeted body work for the abdomen, flanks, and arms. We combine radiofrequency tightening with manual lymphatic technique to refine contour without surgery.",
     what:
-      "Sessions begin with dry brushing and lymphatic drainage, followed by radiofrequency passes calibrated to your tissue response, and close with a contouring wrap infused with caffeine and centella.",
+      "Sessions begin with dry brushing and lymphatic drainage, followed by radiofrequency passes calibrated to your tissue response, and close with a contouring wrap infused with shea, baobab, and centella.",
     results: [
       "Visible tightening across four to six sessions",
       "Improved skin texture and elasticity",
@@ -138,7 +138,7 @@ export const treatments: Treatment[] = [
       "Best paired with hydration and movement",
     ],
     aftercare:
-      "Drink three liters in the twenty-four hours following. Avoid heavy meals that evening.",
+      "Drink three litres in the twenty-four hours following. Avoid heavy meals that evening.",
   },
   {
     slug: "wellness-infusion",
@@ -146,10 +146,10 @@ export const treatments: Treatment[] = [
     name: "Bespoke Wellness Infusion",
     tagline: "Physician-formulated IV therapy. Quiet recovery, restored balance.",
     duration: "75 minutes",
-    from: "From $360",
+    from: "From ₦295,000",
     image: treatmentSerum,
     intro:
-      "Formulated by Dr. Vance for the specific demands of high-output lives. Travel recovery, immune support, skin radiance, and cellular hydration.",
+      "Formulated by Dr. Adaeze for the specific demands of high-output Lagos living. Travel recovery, immune support, skin radiance, and cellular hydration.",
     what:
       "After a brief intake, you settle into our suite for a seventy-five minute infusion. Each formulation is built around your concern, drawing from a library of vitamins, minerals, amino acids, and antioxidants.",
     results: [
@@ -167,27 +167,27 @@ export { ctaObject };
 
 export const team = [
   {
-    name: "Dr. Camille Vance",
+    name: "Dr. Adaeze Okonkwo",
     role: "Founder, Aesthetic Physician",
-    bio: "Trained in dermatology at McGill and refined her practice through five years in Paris and Tokyo. She founded Exquisite to prove that restraint is the highest form of expertise.",
+    bio: "Trained in dermatology at the University of Lagos and refined her practice through six years in London and Johannesburg. She founded Bloom & Glow to prove that restraint is the highest form of expertise.",
     image: team1,
   },
   {
-    name: "Noor Bellini",
+    name: "Chidinma Eze",
     role: "Lead Aesthetician",
-    bio: "A decade of facial work across London, Milan, and Copenhagen. Noor leads our signature facial program and trains every aesthetician on the floor.",
+    bio: "A decade of facial work across Lagos, Abuja, and Accra. Chidinma leads our signature facial programme and trains every aesthetician on the floor.",
     image: team2,
   },
   {
-    name: "Ines Marlow",
+    name: "Nneka Abubakar",
     role: "Laser Specialist",
-    bio: "Certified across every laser platform we operate. Ines treats pigmentation and textural concerns with a calibration most clinics cannot match.",
+    bio: "Certified across every laser platform we operate, with specialist training in melanin-rich skin. Nneka treats pigmentation and textural concerns with a calibration most clinics cannot match.",
     image: team3,
   },
   {
-    name: "Rae Okafor",
+    name: "Tobiloba Adeyemi",
     role: "Wellness & Aftercare Lead",
-    bio: "A registered nurse and aftercare strategist. Rae designs the at-home protocols that compound your in-studio results.",
+    bio: "A registered nurse and aftercare strategist. Tobi designs the at-home protocols that compound your in-studio results — rooted in both clinical science and traditional Nigerian botanical care.",
     image: team4,
   },
 ];
@@ -207,7 +207,7 @@ export const philosophy = [
 ];
 
 export const problems = [
-  { n: "I.", title: "Most plans are written before you walk in", body: "Standardized menus produce standardized faces. We refuse to begin a plan before we have read yours." },
+  { n: "I.", title: "Most plans are written before you walk in", body: "Standardised menus produce standardised faces. We refuse to begin a plan before we have read yours." },
   { n: "II.", title: "Most studios optimize for throughput", body: "Back-to-back bookings shorten the consultation, the treatment, and the result. Ours runs the opposite way." },
   { n: "III.", title: "Most outcomes peak too fast", body: "Aggressive courses look bright at week one and tired by month six. We build for the second year forward." },
 ];

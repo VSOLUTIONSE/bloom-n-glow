@@ -6,9 +6,9 @@ import { team, philosophy, images } from "@/lib/data";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About - Exquisite Medspa" },
-      { name: "description", content: "A private aesthetic studio founded by Dr. Camille Vance. Restraint, precision, and a four-person team trained across Paris, Tokyo, and Copenhagen." },
-      { property: "og:title", content: "About - Exquisite Medspa" },
+      { title: "About - Bloom & Glow" },
+      { name: "description", content: "A private aesthetic studio in Lagos, founded by Dr. Adaeze Okonkwo. Restraint, precision, and a four-person team trained across London, Johannesburg, and Abuja." },
+      { property: "og:title", content: "About - Bloom & Glow" },
       { property: "og:description", content: "The studio, the philosophy, the people." },
     ],
   }),
@@ -57,7 +57,7 @@ function About() {
           <div className="col-span-12 md:col-span-7">
             <img
               src={images.treatmentRoom}
-              alt="Inside the Exquisite studio"
+              alt="Inside the Bloom & Glow studio"
               width={1280}
               height={960}
               loading="lazy"
@@ -66,17 +66,17 @@ function About() {
           </div>
           <div data-reveal className="col-span-12 md:col-span-5 md:pt-10 space-y-6">
             <p className="serif-italic text-2xl md:text-3xl leading-[1.2]">
-              Exquisite was founded in 2018 by Dr. Camille Vance after a
-              decade between Montreal, Paris, and Tokyo.
+              Bloom & Glow was founded in 2019 by Dr. Adaeze Okonkwo after a
+              decade between Lagos, London, and Johannesburg.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              The brief was simple: a studio that treats fewer clients, listens
+              The brief was simple: a studio built for Nigeria — that treats fewer clients, listens
               longer, and builds plans designed to compound over a decade. No
               menu marketing, no upsells, no clients overheard from the next
               room.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Eight years later the rules have not changed. Our floor sees one
+              Seven years later the rules have not changed. Our floor sees one
               client at a time. Every plan is written by hand. The technology
               we use is chosen, not bought because a sales representative
               brought us coffee.

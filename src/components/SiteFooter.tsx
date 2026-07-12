@@ -38,8 +38,8 @@ export function SiteFooter() {
             <div className="space-y-3">
               <p className="text-bone/45">Visit</p>
               <p className="normal-case tracking-normal text-bone/80 text-sm leading-relaxed">
-                218 Mercer Street<br />
-                Arts District<br />
+                14B Adeola Odeku Street<br />
+                Victoria Island, Lagos<br />
                 By appointment
               </p>
             </div>
@@ -47,16 +47,16 @@ export function SiteFooter() {
               <p className="text-bone/45">Elsewhere</p>
               <a className="block hover:text-bone" href="#">Instagram</a>
               <a
-                href="mailto:studio@exquisitemedspa.co"
+                href="mailto:hello@bloomandglow.ng"
                 className="block normal-case tracking-normal hover:text-bone lowercase"
               >
-                studio@exquisitemedspa.co
+                hello@bloomandglow.ng
               </a>
             </div>
             <div className="space-y-3 md:text-right">
               <p className="text-bone/45">© 2026</p>
               <p className="normal-case tracking-normal text-bone/70 text-sm">
-                Exquisite Medspa Ltd.<br />
+                Bloom & Glow Ltd.<br />
                 All rights reserved.
               </p>
             </div>
