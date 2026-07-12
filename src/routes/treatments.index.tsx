@@ -6,9 +6,9 @@ import { treatments, images } from "@/lib/data";
 export const Route = createFileRoute("/treatments/")({
   head: () => ({
     meta: [
-      { title: "Treatments - Exquisite Medspa" },
+      { title: "Treatments - Bloom & Glow" },
       { name: "description", content: "Six core protocols across facial architecture, injectables, laser, resurfacing, body contouring, and bespoke IV wellness." },
-      { property: "og:title", content: "Treatments - Exquisite Medspa" },
+      { property: "og:title", content: "Treatments - Bloom & Glow" },
       { property: "og:description", content: "A curated catalog. Each protocol calibrated and delivered by a single practitioner." },
     ],
   }),

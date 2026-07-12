@@ -70,7 +70,7 @@ function About() {
               decade between Lagos, London, and Johannesburg.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              The brief was simple: a studio built for Nigeria — that treats fewer clients, listens
+              The brief was simple: a studio built for Nigeria - that treats fewer clients, listens
               longer, and builds plans designed to compound over a decade. No
               menu marketing, no upsells, no clients overheard from the next
               room.

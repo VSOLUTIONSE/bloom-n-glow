@@ -187,7 +187,7 @@ export const team = [
   {
     name: "Tobiloba Adeyemi",
     role: "Wellness & Aftercare Lead",
-    bio: "A registered nurse and aftercare strategist. Tobi designs the at-home protocols that compound your in-studio results — rooted in both clinical science and traditional Nigerian botanical care.",
+    bio: "A registered nurse and aftercare strategist. Tobi designs the at-home protocols that compound your in-studio results - rooted in both clinical science and traditional Nigerian botanical care.",
     image: team4,
   },
 ];

@@ -29,7 +29,7 @@ export const sendBookingToMake = createServerFn({ method: "POST" })
       startISO: data.startISO,
       endISO: data.endISO,
       notes: data.notes ?? "",
-      summary: `Exquisite Medspa — ${data.treatment} with ${data.name}`,
+      summary: `Bloom & Glow - ${data.treatment} with ${data.name}`,
     };
 
     const res = await fetch(config.makeWebhookUrl, {

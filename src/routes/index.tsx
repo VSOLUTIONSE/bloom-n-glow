@@ -18,7 +18,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bloom & Glow — Looking good, on repeat." },
+      { title: "Bloom & Glow - Looking good, on repeat." },
       { name: "description", content: "Lagos' premier private aesthetic studio for facial architecture, precision injectables, laser renewal, and bespoke wellness rituals." },
       { property: "og:title", content: "Bloom & Glow" },
       { property: "og:description", content: "Looking good, on repeat. Results worth returning for." },
@@ -129,19 +129,19 @@ function Home() {
               {
                 title: "The Studio",
                 description:
-                  "A private sanctuary in the Arts District — physician-led aesthetics by appointment only.",
+                  "A private sanctuary in the Arts District - physician-led aesthetics by appointment only.",
                 video: "https://zecdvcub3srmcwgz.public.blob.vercel-storage.com/Video%20Project%203.mp4",
               },
               {
                 title: "Treatment Ritual",
                 description:
-                  "Every session begins with quiet — a bespoke protocol written for one face only.",
+                  "Every session begins with quiet - a bespoke protocol written for one face only.",
                 video: "https://zecdvcub3srmcwgz.public.blob.vercel-storage.com/Video%20Project%203%20%281%29.mp4",
               },
               {
                 title: "The Apothecary",
                 description:
-                  "Clinical-grade serums and post-treatment care — formulated to extend results between visits.",
+                  "Clinical-grade serums and post-treatment care - formulated to extend results between visits.",
                 video: "https://zecdvcub3srmcwgz.public.blob.vercel-storage.com/Video%20Project%203%20%282%29.mp4",
               },
             ]}
@@ -165,7 +165,7 @@ function Home() {
               <p className="hero-paragraph text-sm md:text-base leading-[1.6] text-bone/85 max-w-md">
                 Lagos' most private studio for the discerning. Physician-led plans
                 across facial architecture, precision injectables, laser renewal for
-                melanin-rich skin, and bespoke wellness — every protocol written
+                melanin-rich skin, and bespoke wellness - every protocol written
                 for one face only.
               </p>
               <div className="hero-cta">
@@ -354,7 +354,7 @@ function Home() {
               </div>
               <p className="serif-italic text-xl md:text-2xl leading-snug text-lime">
                 {i === 0
-                  ? "Bloom & Glow taught me to invest in myself — I have such clarity in my skin, I feel incredible."
+                  ? "Bloom & Glow taught me to invest in myself - I have such clarity in my skin, I feel incredible."
                   : "Every visit gave me a little more confidence. I've never felt more like myself."}
               </p>
             </div>
@@ -393,7 +393,7 @@ function Home() {
               </h3>
               <p className="mt-5 text-sm md:text-[0.95rem] text-muted-foreground leading-relaxed">
                 We map the face, read the literature, and write a plan for ten
-                years — not ten minutes. The technology serves the plan, never
+                years - not ten minutes. The technology serves the plan, never
                 the other way around.
               </p>
             </div>

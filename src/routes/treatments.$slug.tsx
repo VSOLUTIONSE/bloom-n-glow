@@ -11,9 +11,9 @@ export const Route = createFileRoute("/treatments/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.treatment.name} - Exquisite Medspa` },
+          { title: `${loaderData.treatment.name} - Bloom & Glow` },
           { name: "description", content: loaderData.treatment.tagline },
-          { property: "og:title", content: `${loaderData.treatment.name} - Exquisite Medspa` },
+          { property: "og:title", content: `${loaderData.treatment.name} - Bloom & Glow` },
           { property: "og:description", content: loaderData.treatment.tagline },
           { property: "og:image", content: loaderData.treatment.image },
         ]

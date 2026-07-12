@@ -71,10 +71,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Bloom & Glow — Looking good, on repeat." },
+      { title: "Bloom & Glow - Looking good, on repeat." },
       { name: "description", content: "Lagos' premier private aesthetic studio for facial architecture, precision injectables, laser renewal, and bespoke wellness rituals. Results worth returning for." },
       { name: "author", content: "Bloom & Glow" },
-      { property: "og:title", content: "Bloom & Glow — Looking good, on repeat." },
+      { property: "og:title", content: "Bloom & Glow - Looking good, on repeat." },
       { property: "og:description", content: "A private aesthetic studio in Lagos. Physician-led, restraint-first, built for ten years not ten minutes." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -143,7 +143,7 @@ function Contact() {
               14B Adeola Odeku Street<br />
               Victoria Island, Lagos
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">By appointment, Tuesday — Saturday</p>
+            <p className="mt-2 text-sm text-muted-foreground">By appointment, Tuesday - Saturday</p>
           </div>
           <div>
             <p className="eyebrow text-muted-foreground">Direct</p>

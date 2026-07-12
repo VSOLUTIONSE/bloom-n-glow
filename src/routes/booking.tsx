@@ -25,25 +25,25 @@ import { Button } from "@/components/ui/button";
 const WEB3FORMS_KEY = "d41d81b6-654e-44bd-804a-7db0d90cc911";
 
 const practitionerByTreatment: Record<string, string> = {
-  Consultation: "Helen Owen",
-  "Signature Facial Architecture": "Noor Bellini",
-  "Precision Injectables": "Dr. Camille Vance",
-  "Laser Renewal": "Ines Marlow",
-  "Skin Resurfacing Ritual": "Noor Bellini",
-  "Body Contour Sculpt": "Rae Okafor",
-  "Bespoke Wellness Infusion": "Dr. Camille Vance",
+  Consultation: "Dr. Adaeze Okonkwo",
+  "Signature Facial Architecture": "Chidinma Eze",
+  "Precision Injectables": "Dr. Adaeze Okonkwo",
+  "Laser Renewal": "Nneka Abubakar",
+  "Skin Resurfacing Ritual": "Chidinma Eze",
+  "Body Contour Sculpt": "Tobiloba Adeyemi",
+  "Bespoke Wellness Infusion": "Dr. Adaeze Okonkwo",
 };
 
 export const Route = createFileRoute("/booking")({
   head: () => ({
     meta: [
-      { title: "Book an appointment - Exquisite Medspa" },
+      { title: "Book an appointment - Bloom & Glow" },
       {
         name: "description",
         content:
-          "Reserve a private consultation or treatment at Exquisite Medspa. Choose your protocol, date, and time - we'll confirm by invite.",
+          "Reserve a private consultation or treatment at Bloom & Glow. Choose your protocol, date, and time - we'll confirm by invite.",
       },
-      { property: "og:title", content: "Book an appointment - Exquisite Medspa" },
+      { property: "og:title", content: "Book an appointment - Bloom & Glow" },
       {
         property: "og:description",
         content: "Reserve your private appointment with our physician-led studio.",
@@ -185,8 +185,8 @@ function BookingPage() {
 
       const wf = new FormData();
       wf.append("access_key", WEB3FORMS_KEY);
-      wf.append("subject", `New booking — ${parsed.data.treatment} (${parsed.data.name})`);
-      wf.append("from_name", "Helen Owen — Exquisite Medspa");
+      wf.append("subject", `New booking - ${parsed.data.treatment} (${parsed.data.name})`);
+      wf.append("from_name", "Bloom & Glow Studio");
       wf.append("name", parsed.data.name);
       wf.append("email", parsed.data.email);
       wf.append("phone", parsed.data.phone);
@@ -231,7 +231,7 @@ function BookingPage() {
             {status.summary}
           </p>
           <p className="mt-2 serif-italic text-2xl">
-            {fmt(start)} — {fmt(end)}
+            {fmt(start)} - {fmt(end)}
           </p>
           <p className="mt-6 text-sm text-muted-foreground max-w-md">
             We'll see you at the studio. A confirmation email is on its way.
@@ -270,7 +270,7 @@ function BookingPage() {
           <div className="col-span-12 md:col-span-5 flex flex-col justify-center">
             <p className="text-2xl md:text-4xl leading-[1.15]">
               A private room, <span className="serif-italic text-cobalt">good light,</span>{" "}
-              and a specialist who has done this <span className="serif-italic text-forest">exactly once before</span> — the way you like it.
+              and a specialist who has done this <span className="serif-italic text-forest">exactly once before</span> - the way you like it.
             </p>
             <p className="mt-6 text-sm text-muted-foreground max-w-sm">
               Every appointment is held one-on-one, by invitation, in the same
