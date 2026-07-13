@@ -1,12 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
 import { useMemo, useState } from "react";
+export const dynamic = "force-dynamic";
+import Link from "next/link";
 import { z } from "zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { treatments, images } from "@/lib/data";
 import { MagneticButton } from "@/components/MagneticButton";
 import { useAlert } from "@/components/ui/beautiful-alert";
-import { sendBookingToMake } from "@/lib/api/booking.functions";
 import {
   Select,
   SelectContent,
@@ -33,25 +35,6 @@ const practitionerByTreatment: Record<string, string> = {
   "Body Contour Sculpt": "Tobiloba Adeyemi",
   "Bespoke Wellness Infusion": "Dr. Adaeze Okonkwo",
 };
-
-export const Route = createFileRoute("/booking")({
-  head: () => ({
-    meta: [
-      { title: "Book an appointment - Bloom & Glow" },
-      {
-        name: "description",
-        content:
-          "Reserve a private consultation or treatment at Bloom & Glow. Choose your protocol, date, and time - we'll confirm by invite.",
-      },
-      { property: "og:title", content: "Book an appointment - Bloom & Glow" },
-      {
-        property: "og:description",
-        content: "Reserve your private appointment with our physician-led studio.",
-      },
-    ],
-  }),
-  component: BookingPage,
-});
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -100,7 +83,7 @@ function toDate(dateStr: string) {
   return new Date(`${dateStr}T12:00:00`);
 }
 
-function BookingPage() {
+export default function BookingPage() {
   const slots = useMemo(build12hSlots, []);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
@@ -171,8 +154,10 @@ function BookingPage() {
     const summary = `${parsed.data.treatment} with ${practitioner}`;
 
     try {
-      await sendBookingToMake({
-        data: {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           name: parsed.data.name,
           email: parsed.data.email,
           phone: parsed.data.phone,
@@ -180,8 +165,13 @@ function BookingPage() {
           startISO,
           endISO,
           notes: parsed.data.notes ?? "",
-        },
+        }),
       });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: "Request failed" }));
+        throw new Error(err.error || "Failed to book. Please try again.");
+      }
 
       const wf = new FormData();
       wf.append("access_key", WEB3FORMS_KEY);
@@ -234,7 +224,7 @@ function BookingPage() {
             {fmt(start)} - {fmt(end)}
           </p>
           <p className="mt-6 text-sm text-muted-foreground max-w-md">
-            We'll see you at the studio. A confirmation email is on its way.
+            We&apos;ll see you at the studio. A confirmation email is on its way.
           </p>
           <div className="mt-10 flex gap-4">
             <MagneticButton to="/" variant="ink">Return home</MagneticButton>
@@ -440,7 +430,7 @@ function BookingPage() {
 
           <div className="col-span-12 pt-2 flex items-center gap-6 flex-wrap">
             <MagneticButton variant="ink" disabled={status.kind === "sending"}>
-              {status.kind === "sending" ? "Booking…" : "Confirm appointment"}
+              {status.kind === "sending" ? "Booking\u2026" : "Confirm appointment"}
             </MagneticButton>
             <span className="text-xs text-muted-foreground">
               In-person at our Arts District studio.

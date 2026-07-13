@@ -1,25 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
 import { MagneticButton } from "@/components/MagneticButton";
 import { useAlert } from "@/components/ui/beautiful-alert";
 import { images } from "@/lib/data";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact - Bloom & Glow" },
-      { name: "description", content: "Begin with a sixty-minute consultation. Private studio in Lagos, by appointment, Tuesday through Saturday." },
-      { property: "og:title", content: "Contact - Bloom & Glow" },
-      { property: "og:description", content: "Book a consultation or send a private note." },
-    ],
-  }),
-  component: Contact,
-});
-
 const WEB3FORMS_KEY = "55768752-fedf-4cd7-97c5-7740d278b5a1";
 
-function Contact() {
+export default function Contact() {
   const root = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const { showAlert } = useAlert();
@@ -79,7 +68,7 @@ function Contact() {
           A sixty-minute<br /><span className="serif-italic text-cobalt">consultation.</span>
         </h1>
         <p className="c-rise mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-          Tell us a little about what you're considering. We'll respond within
+          Tell us a little about what you&apos;re considering. We&apos;ll respond within
           one business day with available consultation windows. No pressure
           to book.
         </p>
@@ -121,7 +110,7 @@ function Contact() {
 
             <div className="pt-4 flex items-center gap-6 flex-wrap">
               <MagneticButton variant="ink" disabled={status === "sending"}>
-                {status === "sending" ? "Sending…" : "Send enquiry"}
+                {status === "sending" ? "Sending\u2026" : "Send enquiry"}
               </MagneticButton>
             </div>
 

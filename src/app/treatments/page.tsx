@@ -1,21 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
 import { treatments, images } from "@/lib/data";
 
-export const Route = createFileRoute("/treatments/")({
-  head: () => ({
-    meta: [
-      { title: "Treatments - Bloom & Glow" },
-      { name: "description", content: "Six core protocols across facial architecture, injectables, laser, resurfacing, body contouring, and bespoke IV wellness." },
-      { property: "og:title", content: "Treatments - Bloom & Glow" },
-      { property: "og:description", content: "A curated catalog. Each protocol calibrated and delivered by a single practitioner." },
-    ],
-  }),
-  component: TreatmentsIndex,
-});
-
-function TreatmentsIndex() {
+export default function TreatmentsIndex() {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +28,7 @@ function TreatmentsIndex() {
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12 md:pb-20 border-b border-hairline">
         <div className="grid grid-cols-12 gap-8 items-end">
           <div className="col-span-12 md:col-span-8">
-            <p className="eyebrow text-muted-foreground">Catalog · No.06</p>
+            <p className="eyebrow text-muted-foreground">Catalog &middot; No.06</p>
             <h1 className="mt-5 text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight">
               Six <span className="serif-italic text-cobalt">protocols.</span><br />
               Written for one face <span className="serif-italic text-forest">at a time.</span>
@@ -77,8 +67,7 @@ function TreatmentsIndex() {
         {treatments.map((t) => (
           <Link
             key={t.slug}
-            to="/treatments/$slug"
-            params={{ slug: t.slug }}
+            href={`/treatments/${t.slug}`}
             className="t-row group flex items-center gap-6 md:gap-8 border-b border-hairline px-6 md:px-10 py-6 md:py-8 hover:bg-secondary/50 transition-colors"
           >
             <div className="w-20 h-20 md:w-28 md:h-28 rounded-xl overflow-hidden shrink-0 bg-muted">
@@ -101,7 +90,7 @@ function TreatmentsIndex() {
               <div className="hidden md:block col-span-3 text-sm text-muted-foreground">{t.tagline}</div>
               <div className="hidden md:block col-span-2 text-xs tracking-[0.18em] uppercase text-muted-foreground">{t.duration}</div>
               <div className="col-span-12 md:col-span-1 text-right">
-                <span className="serif-italic text-2xl inline-block transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+                <span className="serif-italic text-2xl inline-block transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">&uarr;</span>
               </div>
             </div>
           </Link>
@@ -114,10 +103,10 @@ function TreatmentsIndex() {
           spectrum of aesthetic medicine. Bring the question.
         </p>
         <Link
-          to="/booking"
+          href="/booking"
           className="mt-6 inline-flex items-center gap-2 text-[0.72rem] tracking-[0.2em] uppercase border-b border-ink pb-1 hover:text-blush hover:border-blush transition-colors"
         >
-          Book a consultation <span>→</span>
+          Book a consultation <span>&rarr;</span>
         </Link>
       </section>
     </div>

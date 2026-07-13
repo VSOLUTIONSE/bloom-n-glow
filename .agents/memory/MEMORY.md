@@ -1,2 +1,0 @@
-- [Replit setup for imported Vercel/Bun+Nitro projects](vercel-nitro-on-replit.md) — Nitro preset must be node-server (not vercel) and Vite dev server needs host/port/allowedHosts for the Replit iframe proxy.
-- [Repurposing CSS tokens for a redesign](css-token-repurpose-redesign.md) — when a codebase uses generic-named tokens/utility classes pervasively, repoint the token values instead of renaming classes across many files.

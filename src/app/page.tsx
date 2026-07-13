@@ -1,5 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap, ScrollTrigger, registerGsap } from "@/lib/gsap-setup";
 import { SplitText } from "@/components/SplitText";
 import { MagneticButton } from "@/components/MagneticButton";
@@ -15,25 +17,12 @@ import {
   ctaObject,
 } from "@/lib/data";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Bloom & Glow - Looking good, on repeat." },
-      { name: "description", content: "Lagos' premier private aesthetic studio for facial architecture, precision injectables, laser renewal, and bespoke wellness rituals." },
-      { property: "og:title", content: "Bloom & Glow" },
-      { property: "og:description", content: "Looking good, on repeat. Results worth returning for." },
-    ],
-  }),
-  component: Home,
-});
-
-function Home() {
+export default function Home() {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     registerGsap();
     const ctx = gsap.context(() => {
-      // Hero timeline
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(".hero-eyebrow", { opacity: 0, y: 12, duration: 0.6 })
         .from(".hero-portrait", { opacity: 0, scale: 1.05, duration: 1.4, ease: "power2.out" }, "-=0.2")
@@ -41,7 +30,6 @@ function Home() {
         .from(".hero-paragraph", { opacity: 0, y: 16, duration: 0.7 }, "-=0.6")
         .from(".hero-cta", { opacity: 0, y: 12, duration: 0.6 }, "-=0.4");
 
-      // Section reveals
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.from(el, {
           opacity: 0,
@@ -52,7 +40,6 @@ function Home() {
         });
       });
 
-      // Staggered children
       gsap.utils.toArray<HTMLElement>("[data-reveal-stagger]").forEach((el) => {
         gsap.from(el.children, {
           opacity: 0,
@@ -64,7 +51,6 @@ function Home() {
         });
       });
 
-      // Pinned diagram with scrub
       const pinSection = document.querySelector(".pin-section");
       if (pinSection) {
         gsap.to(".diagram-orbit", {
@@ -90,7 +76,6 @@ function Home() {
         });
       }
 
-      // Process line draw
       gsap.from(".process-line", {
         scaleY: 0,
         transformOrigin: "top",
@@ -103,7 +88,6 @@ function Home() {
         },
       });
 
-      // Marquee
       const marquee = document.querySelector<HTMLElement>(".marquee-track");
       if (marquee) {
         gsap.to(marquee, {
@@ -120,7 +104,6 @@ function Home() {
 
   return (
     <div ref={root} className="bg-bone text-ink">
-      {/* HERO — bold headline overlaid on the studio reel */}
       <section className="relative px-4 md:px-10 pt-4 md:pt-6">
         <div className="hero-portrait relative overflow-hidden rounded-[1.75rem] w-full h-[82vh] md:h-[88vh]">
           <LuminaInteractiveList
@@ -152,7 +135,7 @@ function Home() {
           <div className="absolute inset-x-0 bottom-0 p-6 md:p-14 pointer-events-none">
             <p className="hero-eyebrow eyebrow inline-flex items-center gap-2 rounded-full bg-bone/90 text-ink px-4 py-1.5 pointer-events-auto">
               <span className="w-1.5 h-1.5 rounded-full bg-lime" />
-              Aesthetic studio · Lagos, Nigeria
+              Aesthetic studio &middot; Lagos, Nigeria
             </p>
             <h1 className="mt-5 text-white text-[2.75rem] sm:text-6xl md:text-[6rem] leading-[0.92] tracking-tight font-bold max-w-4xl">
               <SplitText as="span">Looking good,</SplitText>
@@ -163,7 +146,7 @@ function Home() {
             </h1>
             <div className="mt-7 flex flex-wrap items-end justify-between gap-6 pointer-events-auto">
               <p className="hero-paragraph text-sm md:text-base leading-[1.6] text-bone/85 max-w-md">
-                Lagos' most private studio for the discerning. Physician-led plans
+                Lagos&apos; most private studio for the discerning. Physician-led plans
                 across facial architecture, precision injectables, laser renewal for
                 melanin-rich skin, and bespoke wellness - every protocol written
                 for one face only.
@@ -178,7 +161,6 @@ function Home() {
         </div>
       </section>
 
-      {/* LIME BAND — compliments, incoming */}
       <section id="compliments" className="px-4 md:px-10 pt-10 md:pt-14 pb-14 md:pb-20">
         <div className="rounded-[1.75rem] bg-lime text-lime-ink px-6 md:px-12 py-12 md:py-16">
           <p className="eyebrow text-center text-lime-ink/60">Our regulars say it best</p>
@@ -190,8 +172,7 @@ function Home() {
             {treatments.slice(0, 4).map((t) => (
               <Link
                 key={t.slug}
-                to="/treatments/$slug"
-                params={{ slug: t.slug }}
+                href={`/treatments/${t.slug}`}
                 className="group flex flex-col items-center text-center gap-4"
               >
                 <div className="w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-lime-ink/10 transition-transform group-hover:-translate-y-1">
@@ -213,7 +194,6 @@ function Home() {
         </div>
       </section>
 
-      {/* VALUE PROPS */}
       <section className="px-6 md:px-10 py-16 md:py-20 border-t border-hairline">
         <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14">
           {values.map((v) => (
@@ -228,7 +208,6 @@ function Home() {
         </div>
       </section>
 
-      {/* PROBLEMS */}
       <section className="px-6 md:px-10 py-20 md:py-28">
         <div data-reveal className="max-w-3xl mx-auto text-center">
           <p className="eyebrow text-muted-foreground">The premise</p>
@@ -251,7 +230,6 @@ function Home() {
         </div>
       </section>
 
-      {/* BESTSELLERS — light product-style grid */}
       <section id="bestsellers" className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
         <div data-reveal className="flex flex-wrap items-end justify-between gap-6 mb-12 md:mb-16">
           <div>
@@ -261,10 +239,10 @@ function Home() {
             </h2>
           </div>
           <Link
-            to="/treatments"
+            href="/treatments"
             className="inline-flex items-center gap-2 rounded-full border border-ink px-5 py-2.5 text-[0.72rem] font-bold tracking-[0.16em] uppercase hover:bg-ink hover:text-bone transition-colors"
           >
-            View all treatments →
+            View all treatments &rarr;
           </Link>
         </div>
 
@@ -272,8 +250,7 @@ function Home() {
           {treatments.map((t) => (
             <Link
               key={t.slug}
-              to="/treatments/$slug"
-              params={{ slug: t.slug }}
+              href={`/treatments/${t.slug}`}
               className="group block"
             >
               <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted">
@@ -298,7 +275,6 @@ function Home() {
         </div>
       </section>
 
-      {/* PROMO BAND — purple badge over texture */}
       <section id="promo" className="px-4 md:px-10 pb-14 md:pb-20">
         <div data-reveal className="relative overflow-hidden rounded-[1.75rem] bg-ink text-bone h-[46vh] md:h-[52vh]">
           <img
@@ -314,7 +290,7 @@ function Home() {
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <Link
-              to="/booking"
+              href="/booking"
               className="w-36 h-36 md:w-48 md:h-48 rounded-full bg-blush text-bone flex flex-col items-center justify-center text-center gap-1 hover:scale-105 transition-transform"
             >
               <span className="text-2xl md:text-3xl font-bold leading-none">25% OFF</span>
@@ -326,10 +302,9 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIAL — forest */}
       <section id="testimonials" className="bg-forest text-bone px-6 md:px-10 py-20 md:py-28">
         <div data-reveal className="text-center mb-14">
-          <p className="eyebrow text-bone/60">Don't gatekeep the glow</p>
+          <p className="eyebrow text-bone/60">Don&apos;t gatekeep the glow</p>
           <h2 className="mt-4 text-4xl md:text-6xl leading-[1.02] tracking-tight font-bold">
             Words from the chair
           </h2>
@@ -362,7 +337,6 @@ function Home() {
         </div>
       </section>
 
-      {/* PINNED DIAGRAM */}
       <section className="pin-section relative px-6 md:px-10 py-16 md:py-24 bg-bone overflow-hidden">
         <div className="grid grid-cols-12 gap-10 items-center min-h-[80vh]">
           <div data-reveal className="col-span-12 md:col-span-5">
@@ -374,7 +348,7 @@ function Home() {
               loading="lazy"
               className="w-full aspect-[4/3] object-cover rounded-2xl"
             />
-            <p className="mt-4 eyebrow text-muted-foreground">The studio · Suite I</p>
+            <p className="mt-4 eyebrow text-muted-foreground">The studio &middot; Suite I</p>
           </div>
 
           <div className="col-span-12 md:col-span-7 relative flex items-center justify-center min-h-[70vh]">
@@ -406,7 +380,6 @@ function Home() {
         </div>
       </section>
 
-      {/* PHILOSOPHY GRID */}
       <section className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
         <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {philosophy.map((p) => (
@@ -419,23 +392,21 @@ function Home() {
         </div>
       </section>
 
-      {/* MARQUEE */}
       <section className="bg-ink text-bone py-8 overflow-hidden border-t border-bone/10">
         <div className="marquee-track flex gap-16 whitespace-nowrap serif-italic text-5xl md:text-7xl">
           {Array.from({ length: 2 }).map((_, i) => (
             <span key={i} className="flex items-center gap-16">
               <span>Looking good</span>
-              <span className="text-lime">·</span>
+              <span className="text-lime">&middot;</span>
               <span>On repeat</span>
-              <span className="text-lime">·</span>
+              <span className="text-lime">&middot;</span>
               <span>Results worth returning for</span>
-              <span className="text-lime">·</span>
+              <span className="text-lime">&middot;</span>
             </span>
           ))}
         </div>
       </section>
 
-      {/* PROCESS */}
       <section className="process-section relative px-6 md:px-10 py-20 md:py-32">
         <div data-reveal className="max-w-3xl mx-auto text-center mb-20">
           <p className="eyebrow text-muted-foreground">How it works</p>
@@ -463,7 +434,6 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA BLOCK — lime */}
       <section id="consultation" className="px-6 md:px-10 pb-20 md:pb-28">
         <div data-reveal className="bg-lime text-lime-ink rounded-[1.75rem] overflow-hidden">
           <div className="grid grid-cols-12 items-center">

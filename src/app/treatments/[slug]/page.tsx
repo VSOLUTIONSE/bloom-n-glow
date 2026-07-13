@@ -1,46 +1,39 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { treatments, images } from "@/lib/data";
 import { MagneticButton } from "@/components/MagneticButton";
 
-export const Route = createFileRoute("/treatments/$slug")({
-  loader: ({ params }) => {
-    const t = treatments.find((x) => x.slug === params.slug);
-    if (!t) throw notFound();
-    return { treatment: t };
-  },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.treatment.name} - Bloom & Glow` },
-          { name: "description", content: loaderData.treatment.tagline },
-          { property: "og:title", content: `${loaderData.treatment.name} - Bloom & Glow` },
-          { property: "og:description", content: loaderData.treatment.tagline },
-          { property: "og:image", content: loaderData.treatment.image },
-        ]
-      : [],
-  }),
-  notFoundComponent: () => (
-    <div className="min-h-[60vh] flex items-center justify-center px-6">
-      <div className="text-center">
-        <p className="eyebrow text-muted-foreground">404</p>
-        <h1 className="serif-italic text-4xl mt-3">Treatment not found</h1>
-        <Link to="/treatments" className="mt-6 inline-block underline">View all treatments</Link>
-      </div>
-    </div>
-  ),
-  component: TreatmentDetail,
-});
+export function generateStaticParams() {
+  return treatments.map((t) => ({ slug: t.slug }));
+}
 
-function TreatmentDetail() {
-  const { treatment: t } = Route.useLoaderData();
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const t = treatments.find((x) => x.slug === params.slug);
+  if (!t) return {};
+  return {
+    title: `${t.name} - Bloom & Glow`,
+    description: t.tagline,
+    openGraph: {
+      title: `${t.name} - Bloom & Glow`,
+      description: t.tagline,
+      images: [t.image],
+    },
+  };
+}
+
+export default function TreatmentDetail({ params }: { params: { slug: string } }) {
+  const t = treatments.find((x) => x.slug === params.slug);
+  if (!t) notFound();
+
   const idx = treatments.findIndex((x) => x.slug === t.slug);
   const next = treatments[(idx + 1) % treatments.length];
 
   return (
     <article className="bg-bone text-ink">
       <header className="px-6 md:px-10 pt-12 md:pt-16 pb-8">
-        <Link to="/treatments" className="eyebrow text-muted-foreground hover:text-ink inline-flex items-center gap-2">
-          ← All treatments
+        <Link href="/treatments" className="eyebrow text-muted-foreground hover:text-ink inline-flex items-center gap-2">
+          &larr; All treatments
         </Link>
         <div className="grid grid-cols-12 gap-8 mt-10 items-end">
           <div className="col-span-12 md:col-span-8">
@@ -142,8 +135,7 @@ function TreatmentDetail() {
 
       <section className="px-6 md:px-10 py-16 border-t border-hairline">
         <Link
-          to="/treatments/$slug"
-          params={{ slug: next.slug }}
+          href={`/treatments/${next.slug}`}
           className="group grid grid-cols-12 items-center gap-6"
         >
           <div className="col-span-12 md:col-span-3">
@@ -151,7 +143,7 @@ function TreatmentDetail() {
           </div>
           <div className="col-span-12 md:col-span-9 flex items-center justify-between">
             <h3 className="text-3xl md:text-5xl serif-italic">{next.name}</h3>
-            <span className="serif-italic text-3xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">↗</span>
+            <span className="serif-italic text-3xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">&uarr;</span>
           </div>
         </Link>
       </section>

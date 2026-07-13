@@ -1,24 +1,25 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/treatments", label: "Treatments" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-  { to: "/booking", label: "Book" },
+  { href: "/", label: "Home" },
+  { href: "/treatments", label: "Treatments" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/booking", label: "Book" },
 ];
 
 export function SiteNav() {
-  const path = useRouterState({ select: (s) => s.location.pathname });
+  const path = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-bone/90 backdrop-blur-md border-b border-hairline">
       <div className="grid grid-cols-12 items-center px-6 md:px-10 py-3.5 text-[0.72rem] tracking-[0.16em] uppercase">
         <div className="col-span-6 md:col-span-3">
-          <Link to="/" className="flex items-center gap-1.5 group">
+          <Link href="/" className="flex items-center gap-1.5 group">
             <span className="serif-italic text-2xl md:text-[1.7rem] tracking-tight normal-case lowercase text-ink">
               bloom & glow
             </span>
@@ -28,9 +29,9 @@ export function SiteNav() {
 
         <nav className="hidden md:flex col-span-6 justify-center gap-9 font-semibold">
           {links.slice(0, -1).map((l) => {
-            const active = l.to === "/" ? path === "/" : path.startsWith(l.to);
+            const active = l.href === "/" ? path === "/" : path.startsWith(l.href);
             return (
-              <Link key={l.to} to={l.to as any} className="relative py-1 transition-colors hover:text-ink">
+              <Link key={l.href} href={l.href} className="relative py-1 transition-colors hover:text-ink">
                 <span className={active ? "text-ink" : "text-muted-foreground"}>{l.label}</span>
                 {active && (
                   <motion.span
@@ -45,7 +46,7 @@ export function SiteNav() {
 
         <div className="col-span-6 md:col-span-3 flex justify-end items-center gap-3">
           <Link
-            to="/booking"
+            href="/booking"
             className="hidden md:inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-[0.7rem] font-bold tracking-[0.14em] text-bone hover:bg-lime hover:text-lime-ink transition-colors"
           >
             Book now
@@ -71,7 +72,7 @@ export function SiteNav() {
           >
             <div className="px-6 py-6 flex flex-col gap-5 text-sm tracking-[0.18em] uppercase">
               {links.map((l) => (
-                <Link key={l.to} to={l.to as any} onClick={() => setOpen(false)} className="text-ink">
+                <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-ink">
                   {l.label}
                 </Link>
               ))}

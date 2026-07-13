@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
@@ -19,7 +19,7 @@ export function SiteFooter() {
           </h2>
           <div className="mt-9 flex justify-center">
             <Link
-              to="/booking"
+              href="/booking"
               className="inline-flex items-center rounded-full bg-lime text-lime-ink px-8 py-4 text-[0.78rem] font-bold tracking-[0.16em] uppercase hover:bg-bone transition-colors"
             >
               Book a consultation
@@ -31,9 +31,9 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-[0.72rem] tracking-[0.18em] uppercase text-bone/70">
             <div className="space-y-3">
               <p className="text-bone/45">Studio</p>
-              <Link to="/about" className="block hover:text-bone">About</Link>
-              <Link to="/treatments" className="block hover:text-bone">Treatments</Link>
-              <Link to="/contact" className="block hover:text-bone">Contact</Link>
+              <Link href="/about" className="block hover:text-bone">About</Link>
+              <Link href="/treatments" className="block hover:text-bone">Treatments</Link>
+              <Link href="/contact" className="block hover:text-bone">Contact</Link>
             </div>
             <div className="space-y-3">
               <p className="text-bone/45">Visit</p>

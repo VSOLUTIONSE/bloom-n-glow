@@ -1,23 +1,11 @@
-import heroPortrait from "@/assets/hero-portrait.jpg";
-import treatmentRoom from "@/assets/treatment-room.jpg";
-import ctaObject from "@/assets/cta-object.jpg";
-import treatmentFacial from "@/assets/treatment-facial.jpg";
-import treatmentSkin from "@/assets/treatment-skin.jpg";
-import treatmentSerum from "@/assets/treatment-serum.jpg";
-import treatmentWellness from "@/assets/treatment-wellness.jpg";
-import team1 from "@/assets/team-1.jpg";
-import team2 from "@/assets/team-2.jpg";
-import team3 from "@/assets/team-3.jpg";
-import team4 from "@/assets/team-4.jpg";
-
 export const images = {
-  heroPortrait,
-  treatmentRoom,
-  ctaObject,
-  treatmentFacial,
-  treatmentSkin,
-  treatmentSerum,
-  treatmentWellness,
+  heroPortrait: "/images/hero-portrait.jpg",
+  treatmentRoom: "/images/treatment-room.jpg",
+  ctaObject: "/images/cta-object.jpg",
+  treatmentFacial: "/images/treatment-facial.jpg",
+  treatmentSkin: "/images/treatment-skin.jpg",
+  treatmentSerum: "/images/treatment-serum.jpg",
+  treatmentWellness: "/images/treatment-wellness.jpg",
 };
 
 export type Treatment = {
@@ -42,7 +30,7 @@ export const treatments: Treatment[] = [
     tagline: "Structural sculpting through lymphatic and myofascial work.",
     duration: "90 minutes",
     from: "From ₦280,000",
-    image: treatmentFacial,
+    image: images.treatmentFacial,
     intro:
       "A ninety-minute ritual that re-sculpts the face from the inside out, working the deep tissue planes our practitioners trained in Lagos and Abuja have spent careers refining.",
     what:
@@ -63,7 +51,7 @@ export const treatments: Treatment[] = [
     tagline: "Restraint, in micro-doses. Never the cliché.",
     duration: "60 minutes",
     from: "From ₦395,000",
-    image: treatmentSerum,
+    image: images.treatmentSerum,
     intro:
       "Our injectable philosophy is built around a single principle: you should not look done. You should look rested, considered, and unmistakably yourself.",
     what:
@@ -84,7 +72,7 @@ export const treatments: Treatment[] = [
     tagline: "Wavelength-tuned correction. Quiet, calibrated, exact.",
     duration: "75 minutes",
     from: "From ₦430,000",
-    image: treatmentSkin,
+    image: images.treatmentSkin,
     intro:
       "Our laser program is built on platforms used by the most discerning dermatology clinics in Lagos and Nairobi. Each session is calibrated to your specific melanin-rich skin signature.",
     what:
@@ -105,7 +93,7 @@ export const treatments: Treatment[] = [
     tagline: "A studied acid exchange. Cellular turnover without compromise.",
     duration: "60 minutes",
     from: "From ₦240,000",
-    image: treatmentFacial,
+    image: images.treatmentFacial,
     intro:
       "A precisely layered chemical exchange that resets the skin's renewal cycle. Designed for those who want correction without recovery time.",
     what:
@@ -126,7 +114,7 @@ export const treatments: Treatment[] = [
     tagline: "Non-invasive contouring through radiofrequency and lymphatic work.",
     duration: "90 minutes",
     from: "From ₦345,000",
-    image: treatmentWellness,
+    image: images.treatmentWellness,
     intro:
       "Targeted body work for the abdomen, flanks, and arms. We combine radiofrequency tightening with manual lymphatic technique to refine contour without surgery.",
     what:
@@ -147,7 +135,7 @@ export const treatments: Treatment[] = [
     tagline: "Physician-formulated IV therapy. Quiet recovery, restored balance.",
     duration: "75 minutes",
     from: "From ₦295,000",
-    image: treatmentSerum,
+    image: images.treatmentSerum,
     intro:
       "Formulated by Dr. Adaeze for the specific demands of high-output Lagos living. Travel recovery, immune support, skin radiance, and cellular hydration.",
     what:
@@ -163,32 +151,32 @@ export const treatments: Treatment[] = [
   },
 ];
 
-export { ctaObject };
+export const ctaObject = images.ctaObject;
 
 export const team = [
   {
     name: "Dr. Adaeze Okonkwo",
     role: "Founder, Aesthetic Physician",
     bio: "Trained in dermatology at the University of Lagos and refined her practice through six years in London and Johannesburg. She founded Bloom & Glow to prove that restraint is the highest form of expertise.",
-    image: team1,
+    image: "/images/team-1.jpg",
   },
   {
     name: "Chidinma Eze",
     role: "Lead Aesthetician",
     bio: "A decade of facial work across Lagos, Abuja, and Accra. Chidinma leads our signature facial programme and trains every aesthetician on the floor.",
-    image: team2,
+    image: "/images/team-2.jpg",
   },
   {
     name: "Nneka Abubakar",
     role: "Laser Specialist",
     bio: "Certified across every laser platform we operate, with specialist training in melanin-rich skin. Nneka treats pigmentation and textural concerns with a calibration most clinics cannot match.",
-    image: team3,
+    image: "/images/team-3.jpg",
   },
   {
     name: "Tobiloba Adeyemi",
     role: "Wellness & Aftercare Lead",
     bio: "A registered nurse and aftercare strategist. Tobi designs the at-home protocols that compound your in-studio results - rooted in both clinical science and traditional Nigerian botanical care.",
-    image: team4,
+    image: "/images/team-4.jpg",
   },
 ];
 

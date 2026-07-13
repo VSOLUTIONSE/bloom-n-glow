@@ -1,21 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
 import { useEffect, useRef } from "react";
+import type { Metadata } from "next";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
 import { team, philosophy, images } from "@/lib/data";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About - Bloom & Glow" },
-      { name: "description", content: "A private aesthetic studio in Lagos, founded by Dr. Adaeze Okonkwo. Restraint, precision, and a four-person team trained across London, Johannesburg, and Abuja." },
-      { property: "og:title", content: "About - Bloom & Glow" },
-      { property: "og:description", content: "The studio, the philosophy, the people." },
-    ],
-  }),
-  component: About,
-});
-
-function About() {
+export default function About() {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,7 +75,6 @@ function About() {
         </div>
       </section>
 
-      {/* PHILOSOPHY */}
       <section id="philosophy" className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
         <div data-reveal className="mb-14">
           <p className="eyebrow text-muted-foreground">Philosophy</p>
@@ -120,11 +109,10 @@ function About() {
         </div>
       </section>
 
-      {/* TEAM */}
       <section className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
         <div data-reveal className="mb-14 flex items-end justify-between gap-6 flex-wrap">
           <div>
-            <p className="eyebrow text-muted-foreground">The floor · Four practitioners</p>
+            <p className="eyebrow text-muted-foreground">The floor &middot; Four practitioners</p>
             <h2 className="mt-4 text-4xl md:text-6xl">
               People who <span className="serif-italic text-blush">stay.</span>
             </h2>

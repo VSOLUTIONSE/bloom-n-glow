@@ -1,6 +1,8 @@
+"use client";
+
 import { useRef, type ReactNode, type MouseEvent } from "react";
 import { gsap } from "@/lib/gsap-setup";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 
 type Props = {
   children: ReactNode;
@@ -70,7 +72,7 @@ export function MagneticButton({
       style={{ willChange: "transform" }}
     >
       {to ? (
-        <Link to={to as any} className={classes} onClick={onClick}>
+        <Link href={to!} className={classes} onClick={onClick}>
           {content}
         </Link>
       ) : href ? (
