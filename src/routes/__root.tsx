@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { Agentation } from "agentation";
 
 import appCss from "../styles.css?url";
 import { SiteNav } from "@/components/SiteNav";
@@ -122,6 +123,7 @@ function RootComponent() {
           </main>
           <SiteFooter />
         </div>
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </AlertProvider>
     </QueryClientProvider>
   );

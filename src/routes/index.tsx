@@ -445,7 +445,7 @@ function Home() {
         </div>
 
         <div className="relative max-w-3xl mx-auto">
-          <div className="process-line absolute left-1/2 top-0 bottom-0 w-px bg-blush" />
+          <div className="process-line absolute left-1/2 top-0 bottom-0 w-px bg-blush hidden md:block" />
           <div data-reveal-stagger className="space-y-16">
             {process.map((p, i) => (
               <div key={p.n} className={`grid grid-cols-12 gap-6 items-start ${i % 2 ? "md:text-left" : "md:text-right"}`}>
