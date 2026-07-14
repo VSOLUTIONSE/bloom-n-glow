@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
-import { treatments, images } from "@/lib/data";
+import { images, categories } from "@/lib/data";
 
 export default function TreatmentsIndex() {
   const root = useRef<HTMLDivElement>(null);
@@ -11,13 +11,13 @@ export default function TreatmentsIndex() {
   useEffect(() => {
     registerGsap();
     const ctx = gsap.context(() => {
-      gsap.from(".t-row", {
+      gsap.from(".cat-card", {
         opacity: 0,
-        y: 28,
+        y: 32,
         duration: 0.9,
-        stagger: 0.08,
+        stagger: 0.1,
         ease: "power2.out",
-        scrollTrigger: { trigger: ".t-list", start: "top 80%" },
+        scrollTrigger: { trigger: ".cat-grid", start: "top 80%" },
       });
     }, root);
     return () => ctx.revert();
@@ -25,33 +25,46 @@ export default function TreatmentsIndex() {
 
   return (
     <div ref={root} className="bg-bone text-ink">
-      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12 md:pb-20 border-b border-hairline">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12 md:pb-16 border-b border-hairline">
         <div className="grid grid-cols-12 gap-8 items-end">
           <div className="col-span-12 md:col-span-8">
-            <p className="eyebrow text-muted-foreground">Catalog &middot; No.06</p>
+            <p className="eyebrow text-muted-foreground">Catalog</p>
             <h1 className="mt-5 text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight">
-              Six <span className="serif-italic text-cobalt">protocols.</span><br />
-              Written for one face <span className="serif-italic text-forest">at a time.</span>
+              Bespoke <span className="serif-italic text-cobalt">rituals.</span><br />
+              Tailored for <span className="serif-italic text-forest">your skin.</span>
             </h1>
           </div>
           <div className="col-span-12 md:col-span-4 md:pb-4">
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-              We keep our menu small on purpose. Every protocol below is
-              practiced weekly by a primary specialist, refined quarterly,
-              and delivered without compromise.
+              Explore our comprehensive range of medical aesthetics and classic spa therapies.
+              Browse by category or select individual treatments to build your custom session.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-16 md:py-20 grid grid-cols-12 gap-6">
+      <section className="px-6 md:px-10 py-4 border-b border-hairline overflow-x-auto whitespace-nowrap scrollbar-none bg-bone/50 sticky top-16 z-40 backdrop-blur-md">
+        <div className="flex gap-4 md:gap-6">
+          {categories.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/treatments/category/${cat.slug}`}
+              className="px-5 py-2.5 rounded-full text-[0.68rem] font-bold tracking-[0.16em] uppercase transition-colors border border-hairline hover:border-ink hover:text-ink text-muted-foreground"
+            >
+              {cat.name === "Spa, Massages, and Body Contouring" ? "Spa & Body" : cat.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-6 border-b border-hairline">
         <img
           src={images.treatmentRoom}
           alt="Inside the studio"
           width={900}
           height={520}
           loading="lazy"
-          className="col-span-12 md:col-span-8 w-full h-[26vh] md:h-[38vh] object-cover rounded-2xl"
+          className="col-span-12 md:col-span-8 w-full h-[24vh] md:h-[32vh] object-cover rounded-2xl"
         />
         <img
           src={images.ctaObject}
@@ -59,48 +72,64 @@ export default function TreatmentsIndex() {
           width={480}
           height={520}
           loading="lazy"
-          className="col-span-12 md:col-span-4 w-full h-[26vh] md:h-[38vh] object-cover rounded-2xl"
+          className="col-span-12 md:col-span-4 w-full h-[24vh] md:h-[32vh] object-cover rounded-2xl"
         />
       </section>
 
-      <section className="t-list">
-        {treatments.map((t) => (
-          <Link
-            key={t.slug}
-            href={`/treatments/${t.slug}`}
-            className="t-row group flex items-center gap-6 md:gap-8 border-b border-hairline px-6 md:px-10 py-6 md:py-8 hover:bg-secondary/50 transition-colors"
-          >
-            <div className="w-20 h-20 md:w-28 md:h-28 rounded-xl overflow-hidden shrink-0 bg-muted">
-              <img
-                src={t.image}
-                alt={t.name}
-                width={224}
-                height={224}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="grid grid-cols-12 gap-6 items-center flex-1 min-w-0">
-              <div className="col-span-2 md:col-span-1">
-                <span className="serif-italic text-blush text-lg md:text-xl">{t.number}</span>
-              </div>
-              <div className="col-span-10 md:col-span-5">
-                <h2 className="text-2xl md:text-4xl">{t.name}</h2>
-              </div>
-              <div className="hidden md:block col-span-3 text-sm text-muted-foreground">{t.tagline}</div>
-              <div className="hidden md:block col-span-2 text-xs tracking-[0.18em] uppercase text-muted-foreground">{t.duration}</div>
-              <div className="col-span-12 md:col-span-1 text-right">
-                <span className="serif-italic text-2xl inline-block transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">&uarr;</span>
-              </div>
-            </div>
-          </Link>
-        ))}
+      {/* Category Grid */}
+      <section className="cat-grid px-6 md:px-10 py-16 md:py-20">
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          {categories.map((cat, i) => {
+            const catImages = [
+              images.treatmentFacial,
+              images.treatmentFacial,
+              images.treatmentSkin,
+              images.treatmentSerum,
+              images.treatmentWellness,
+            ];
+            return (
+              <Link
+                key={cat.slug}
+                href={`/treatments/category/${cat.slug}`}
+                className="cat-card col-span-12 md:col-span-4 group block"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted">
+                  <img
+                    src={catImages[i] || images.treatmentFacial}
+                    alt={cat.name}
+                    width={640}
+                    height={800}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <p className="eyebrow text-bone/70 text-[0.6rem]">
+                      Category {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-2 text-2xl md:text-3xl font-bold text-bone leading-tight">
+                      {cat.name === "Spa, Massages, and Body Contouring"
+                        ? "Spa & Body"
+                        : cat.name}
+                    </h3>
+                    <p className="mt-2 text-xs text-bone/70 leading-relaxed max-w-xs line-clamp-2">
+                      {cat.description}
+                    </p>
+                    <span className="mt-4 inline-flex items-center text-[0.65rem] font-bold tracking-[0.16em] uppercase text-lime border-b border-lime pb-0.5 group-hover:border-blush group-hover:text-blush transition-colors">
+                      Browse &rarr;
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </section>
 
-      <section className="px-6 md:px-10 py-20 text-center">
-        <p className="text-sm text-muted-foreground max-w-md mx-auto">
-          Looking for something not listed? Our consultations cover the full
-          spectrum of aesthetic medicine. Bring the question.
+      <section className="px-6 md:px-10 py-20 text-center border-t border-hairline">
+        <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+          Looking for a custom combination of treatments? Build your session from
+          individual services and pay securely.
         </p>
         <Link
           href="/booking"

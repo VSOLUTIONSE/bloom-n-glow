@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useCart } from "@/hooks/use-cart";
+import { CartDrawer } from "@/components/CartDrawer";
+import { ShoppingBag } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -14,6 +19,7 @@ const links = [
 export function SiteNav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const { cart, setIsCartOpen } = useCart();
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-bone/90 backdrop-blur-md border-b border-hairline">
@@ -45,6 +51,20 @@ export function SiteNav() {
         </nav>
 
         <div className="col-span-6 md:col-span-3 flex justify-end items-center gap-3">
+          {/* Cart Icon Button */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="p-2 rounded-full hover:bg-ink/5 transition-colors relative flex items-center justify-center text-ink"
+            aria-label="Open cart"
+          >
+            <ShoppingBag className="w-[1.1rem] h-[1.1rem]" />
+            {cart.length > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-blush text-bone text-[9px] font-bold rounded-full flex items-center justify-center">
+                {cart.length}
+              </span>
+            )}
+          </button>
+
           <Link
             href="/booking"
             className="hidden md:inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-[0.7rem] font-bold tracking-[0.14em] text-bone hover:bg-lime hover:text-lime-ink transition-colors"
@@ -83,6 +103,8 @@ export function SiteNav() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <CartDrawer />
     </header>
   );
 }

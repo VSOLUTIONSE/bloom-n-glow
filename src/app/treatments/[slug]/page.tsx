@@ -2,14 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { treatments, images } from "@/lib/data";
-import { MagneticButton } from "@/components/MagneticButton";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 export function generateStaticParams() {
   return treatments.map((t) => ({ slug: t.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const t = treatments.find((x) => x.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const t = treatments.find((x) => x.slug === slug);
   if (!t) return {};
   return {
     title: `${t.name} - Bloom & Glow`,
@@ -22,8 +23,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function TreatmentDetail({ params }: { params: { slug: string } }) {
-  const t = treatments.find((x) => x.slug === params.slug);
+export default async function TreatmentDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const t = treatments.find((x) => x.slug === slug);
   if (!t) notFound();
 
   const idx = treatments.findIndex((x) => x.slug === t.slug);
@@ -52,7 +54,7 @@ export default function TreatmentDetail({ params }: { params: { slug: string } }
             </div>
             <div>
               <p className="eyebrow text-muted-foreground">Investment</p>
-              <p className="mt-2">{t.from}</p>
+              <p className="mt-2 font-semibold">{new Intl.NumberFormat("en-NG", { style: "currency", currency: "NGN", minimumFractionDigits: 0 }).format(t.price)}</p>
             </div>
           </div>
         </div>
@@ -122,13 +124,13 @@ export default function TreatmentDetail({ params }: { params: { slug: string } }
         <div className="max-w-3xl">
           <p className="eyebrow">Begin</p>
           <h2 className="mt-4 text-5xl md:text-7xl leading-[0.95]">
-            Book your<br /><span className="serif-italic">consultation</span>
+            Add to your<br /><span className="serif-italic">cart</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed">
-            A sixty-minute mapping, a written plan, no pressure to book.
+            Add this ritual to your cart and continue browsing, or proceed to book.
           </p>
-          <div className="mt-8">
-            <MagneticButton to="/booking" variant="ink">Begin</MagneticButton>
+          <div className="mt-8 flex gap-4 flex-wrap">
+            <AddToCartButton treatment={t} />
           </div>
         </div>
       </section>

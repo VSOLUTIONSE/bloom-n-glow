@@ -268,7 +268,7 @@ export default function Home() {
               </div>
               <div className="mt-3">
                 <h3 className="text-sm md:text-base font-semibold leading-snug">{t.name}</h3>
-                <p className="mt-1 text-xs md:text-sm text-muted-foreground">{t.from}</p>
+                <p className="mt-1 text-xs md:text-sm text-muted-foreground">From ₦{t.price.toLocaleString("en-NG")}</p>
               </div>
             </Link>
           ))}
