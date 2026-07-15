@@ -15,12 +15,18 @@ export default function Contact() {
 
   useEffect(() => {
     registerGsap();
-    const ctx = gsap.context(() => {
-      gsap.from(".c-rise", {
-        opacity: 0, y: 24, duration: 0.9, stagger: 0.08, ease: "power2.out",
-      });
-    }, root);
-    return () => ctx.revert();
+    let ctx: gsap.Context | null = null;
+    const id = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        gsap.from(".c-rise", {
+          opacity: 0, y: 24, duration: 0.9, stagger: 0.08, ease: "power2.out",
+        });
+      }, root);
+    });
+    return () => {
+      cancelAnimationFrame(id);
+      ctx?.revert();
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -61,10 +67,10 @@ export default function Contact() {
   };
 
   return (
-    <div ref={root} className="bg-bone text-ink">
+    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12">
         <p className="c-rise eyebrow text-muted-foreground">Begin</p>
-        <h1 className="c-rise mt-5 text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl">
+        <h1 className="c-rise mt-5 text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl break-words">
           A sixty-minute<br /><span className="serif-italic text-cobalt">consultation.</span>
         </h1>
         <p className="c-rise mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">

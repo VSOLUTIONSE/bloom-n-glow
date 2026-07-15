@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { Metadata } from "next";
 import { gsap, registerGsap } from "@/lib/gsap-setup";
 import { team, philosophy, images } from "@/lib/data";
 

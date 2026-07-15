@@ -40,7 +40,7 @@ export default function CategoryPage() {
         <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 md:col-span-8">
             <p className="eyebrow text-muted-foreground">Category</p>
-            <h1 className="mt-4 text-4xl md:text-6xl leading-[0.95] tracking-tight">
+            <h1 className="mt-4 text-4xl md:text-6xl leading-[0.95] tracking-tight break-words">
               {category.name}
             </h1>
             <p className="mt-4 text-base text-muted-foreground max-w-xl leading-relaxed">
