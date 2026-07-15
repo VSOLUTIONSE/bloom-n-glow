@@ -22,20 +22,21 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 
+// PaystackPop is loaded from https://js.paystack.co/v1/inline.js (see useEffect below).
+// It's the raw Paystack SDK — NOT a React wrapper (we removed react-paystack).
+// setup() opens the payment popup. openIframe() renders it.
+// The callback fires after successful payment with a reference we store server-side.
 declare global {
   interface Window {
     PaystackPop: {
       setup: (config: {
-        accessCode?: string;
-        key?: string;
-        email?: string;
-        amount?: number;
-        ref?: string;
-        currency?: string;
-        callback?: (response: { reference: string }) => void;
-        onClose?: () => void;
-        onSuccess?: (response: { reference: string }) => void;
-        onCancel?: () => void;
+        key: string;          // Public key from env (safe on client)
+        email: string;        // Customer email for receipt
+        amount: number;       // In kobo (server-calculated, NOT client-sent)
+        ref: string;          // Unique reference (server-generated)
+        currency?: string;    // Defaults to NGN
+        callback?: (response: { reference: string }) => void;  // Payment confirmed
+        onClose?: () => void; // User closed popup without paying
       }) => { openIframe: () => void };
     };
   }
@@ -97,6 +98,7 @@ export default function BookingPage() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [scriptReady, setScriptReady] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const tomorrow = todayISO();
 
@@ -109,18 +111,31 @@ export default function BookingPage() {
     notes: "",
   });
 
+  // Dynamically loads the Paystack inline.js SDK.
+  // Only runs once (empty deps). Sets scriptReady so the submit button
+  // knows the SDK is available before trying to open the payment popup.
   useEffect(() => {
     if (typeof window.PaystackPop !== "undefined") {
       setScriptReady(true);
+      return;
+    }
+    if (document.querySelector('script[src="https://js.paystack.co/v1/inline.js"]')) {
       return;
     }
     const s = document.createElement("script");
     s.src = "https://js.paystack.co/v1/inline.js";
     s.async = true;
     s.onload = () => setScriptReady(true);
-    s.onerror = () => console.error("Failed to load Paystack script");
+    s.onerror = () => {
+      console.error("Failed to load Paystack script");
+      showAlert({
+        title: "Payment System Unavailable",
+        message: "Unable to load the payment provider. Please check your connection or try again later.",
+        type: "error",
+      });
+    };
     document.head.appendChild(s);
-  }, []);
+  }, [showAlert]);
 
   const set = <K extends keyof FormValues>(k: K, v: FormValues[K]) =>
     setValues((s) => ({ ...s, [k]: v }));
@@ -143,9 +158,11 @@ export default function BookingPage() {
     return acc + (match ? parseInt(match[1], 10) : 60);
   }, 0);
 
-  const itemNames = cart.map((i) => i.treatment.name);
-  const itemSlugs = cart.map((i) => i.treatment.slug);
+  const itemNames = useMemo(() => cart.map((i) => i.treatment.name), [cart]);
+  const itemSlugs = useMemo(() => cart.map((i) => i.treatment.slug), [cart]);
 
+  // Called after Paystack confirms payment. Sends booking details + payment reference
+  // to /api/booking which forwards to the Make webhook for email notifications.
   const onPaystackSuccess = useCallback(
     async (ref: string) => {
       setStatus({ kind: "sending" });
@@ -165,6 +182,7 @@ export default function BookingPage() {
             email: values.email.trim(),
             phone: values.phone.trim(),
             items: itemNames,
+            itemSlugs,
             startISO,
             endISO,
             notes: values.notes ?? "",
@@ -180,6 +198,7 @@ export default function BookingPage() {
 
         clearCart();
 
+        // Show success alert; on confirm, render the success page with treatment images
         showAlert({
           title: "Payment Confirmed & Booked!",
           message: `Thank you, ${values.name}! Your session has been confirmed. We'll see you at the studio.`,
@@ -192,18 +211,28 @@ export default function BookingPage() {
           },
         });
       } catch (err) {
+        setIsSubmitting(false);
         const msg = err instanceof Error ? err.message : "Something went wrong.";
         setStatus({ kind: "error", message: msg });
-        showAlert({ title: "Booking Error", message: msg, type: "error" });
+        showAlert({
+          title: "Booking Error",
+          message: `${msg} Your payment was successful (ref: ${ref}). Please contact support with this reference.`,
+          type: "error",
+        });
       }
     },
-    [values, cart, totalDuration, itemNames, totalPrice, showAlert, clearCart],
+    [values, cart, totalDuration, itemNames, totalPrice, showAlert, clearCart, setIsSubmitting],
   );
 
+  // Handles the "Pay & Confirm" button click.
+  // Flow: validate form → get server-calculated amount + reference → open Paystack popup.
   const onSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
 
+      if (isSubmitting) return;
+
+      // Step 1: Validate form fields
       const validation = validateForm(values, totalPrice);
       if (!validation.valid) {
         setErrors(validation.errors);
@@ -216,6 +245,7 @@ export default function BookingPage() {
       }
       setErrors({});
 
+      // Step 2: Ensure Paystack SDK has loaded
       if (!scriptReady) {
         showAlert({
           title: "Payment Not Ready",
@@ -225,7 +255,21 @@ export default function BookingPage() {
         return;
       }
 
+      // Step 3: Check public key is available
+      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
+      if (!publicKey) {
+        showAlert({
+          title: "Configuration Error",
+          message: "Payment system is not configured on this site.",
+          type: "error",
+        });
+        return;
+      }
+
+      setIsSubmitting(true);
+
       try {
+        // Step 4: Ask server to calculate price + generate reference
         const initRes = await fetch("/api/paystack/initialize", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -241,12 +285,21 @@ export default function BookingPage() {
           throw new Error(initData.error || "Failed to initialize payment.");
         }
 
+        if (!initData.amount || !initData.reference) {
+          throw new Error("Invalid response from payment server.");
+        }
+
+        // Step 5: Open Paystack payment popup
         window.PaystackPop.setup({
-          accessCode: initData.accessCode,
+          key: publicKey,
+          email: values.email.trim(),
+          amount: initData.amount,
+          ref: initData.reference,
           callback: (response: { reference: string }) => {
             onPaystackSuccess(response.reference);
           },
           onClose: () => {
+            setIsSubmitting(false);
             showAlert({
               title: "Payment Cancelled",
               message: "You closed the payment window. Your cart is still saved.",
@@ -255,11 +308,12 @@ export default function BookingPage() {
           },
         }).openIframe();
       } catch (err) {
+        setIsSubmitting(false);
         const msg = err instanceof Error ? err.message : "Something went wrong.";
         showAlert({ title: "Payment Error", message: msg, type: "error" });
       }
     },
-    [values, totalPrice, itemSlugs, scriptReady, showAlert, onPaystackSuccess],
+    [values, totalPrice, itemSlugs, scriptReady, showAlert, onPaystackSuccess, isSubmitting],
   );
 
 
@@ -546,7 +600,7 @@ export default function BookingPage() {
           <div className="col-span-12 pt-4 flex items-center gap-6 flex-wrap border-t border-hairline">
             <button
               type="submit"
-              disabled={status.kind === "sending" || cart.length === 0}
+              disabled={isSubmitting || status.kind === "sending" || cart.length === 0}
               className="relative inline-flex items-center justify-center px-8 py-4 text-[0.78rem] tracking-[0.16em] uppercase font-bold transition-colors rounded-full bg-ink text-bone hover:bg-lime hover:text-lime-ink disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status.kind === "sending"
