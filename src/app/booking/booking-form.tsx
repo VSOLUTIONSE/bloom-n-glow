@@ -375,7 +375,7 @@ export default function BookingPage() {
         </h1>
         <p className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
           Choose your preferred window. All sessions are held
-          in our private studio in the Arts District.
+          in our private studio in Lagos.
         </p>
       </section>
 
