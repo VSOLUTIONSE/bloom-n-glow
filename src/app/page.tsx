@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <div ref={root} className="bg-bone text-ink overflow-x-hidden">
       <section className="relative px-4 md:px-10 pt-4 md:pt-6">
-        <div className="hero-portrait relative overflow-hidden rounded-[1.75rem] w-full h-[82vh] md:h-[88vh]">
+        <div className="hero-portrait relative overflow-hidden rounded-[1.75rem] w-full h-[60vh] md:h-[88vh]">
           <LuminaInteractiveList
             showOverlayText={false}
             slides={[
