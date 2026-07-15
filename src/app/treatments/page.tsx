@@ -10,17 +10,23 @@ export default function TreatmentsIndex() {
 
   useEffect(() => {
     registerGsap();
-    const ctx = gsap.context(() => {
-      gsap.from(".cat-card", {
-        opacity: 0,
-        y: 32,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: { trigger: ".cat-grid", start: "top 80%" },
-      });
-    }, root);
-    return () => ctx.revert();
+    let ctx: gsap.Context | null = null;
+    const id = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        gsap.from(".cat-card", {
+          opacity: 0,
+          y: 32,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: { trigger: ".cat-grid", start: "top 80%" },
+        });
+      }, root);
+    });
+    return () => {
+      cancelAnimationFrame(id);
+      ctx?.revert();
+    };
   }, []);
 
   return (

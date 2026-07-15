@@ -70,7 +70,7 @@ export function LuminaInteractiveList({
     <div
       className={`relative w-full h-full overflow-hidden bg-ink text-bone ${className}`}
     >
-      {/* Stacked videos with crossfade */}
+      {/* Stacked videos with crossfade — only active video uses preload */}
       {slides.map((s, i) => (
         <video
           key={s.video}
@@ -82,7 +82,7 @@ export function LuminaInteractiveList({
           muted
           loop
           playsInline
-          preload="auto"
+          preload={i === 0 ? "auto" : "none"}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1400ms] ease-out"
           style={{ opacity: i === index ? 1 : 0 }}
         />

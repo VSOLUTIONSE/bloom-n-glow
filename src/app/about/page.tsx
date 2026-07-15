@@ -10,26 +10,32 @@ export default function About() {
 
   useEffect(() => {
     registerGsap();
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 28,
-          duration: 0.9,
-          ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+    let ctx: gsap.Context | null = null;
+    const id = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+          gsap.from(el, {
+            opacity: 0,
+            y: 28,
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          });
         });
-      });
-      gsap.from(".team-card", {
-        opacity: 0,
-        y: 32,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: "power2.out",
-        scrollTrigger: { trigger: ".team-grid", start: "top 80%" },
-      });
-    }, root);
-    return () => ctx.revert();
+        gsap.from(".team-card", {
+          opacity: 0,
+          y: 32,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: { trigger: ".team-grid", start: "top 80%" },
+        });
+      }, root);
+    });
+    return () => {
+      cancelAnimationFrame(id);
+      ctx?.revert();
+    };
   }, []);
 
   return (

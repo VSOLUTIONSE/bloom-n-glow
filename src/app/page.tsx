@@ -22,84 +22,90 @@ export default function Home() {
 
   useEffect(() => {
     registerGsap();
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".hero-eyebrow", { opacity: 0, y: 12, duration: 0.6 })
-        .from(".hero-portrait", { opacity: 0, scale: 1.05, duration: 1.4, ease: "power2.out" }, "-=0.2")
-        .to("[data-split-char]", { y: 0, duration: 1, stagger: 0.018, ease: "expo.out" }, "-=1.1")
-        .from(".hero-paragraph", { opacity: 0, y: 16, duration: 0.7 }, "-=0.6")
-        .from(".hero-cta", { opacity: 0, y: 12, duration: 0.6 }, "-=0.4");
+    let ctx: gsap.Context | null = null;
+    const id = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".hero-eyebrow", { opacity: 0, y: 12, duration: 0.6 })
+          .from(".hero-portrait", { opacity: 0, scale: 1.05, duration: 1.4, ease: "power2.out" }, "-=0.2")
+          .to("[data-split-char]", { y: 0, duration: 1, stagger: 0.018, ease: "expo.out" }, "-=1.1")
+          .from(".hero-paragraph", { opacity: 0, y: 16, duration: 0.7 }, "-=0.6")
+          .from(".hero-cta", { opacity: 0, y: 12, duration: 0.6 }, "-=0.4");
 
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 32,
-          duration: 0.9,
-          ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+          gsap.from(el, {
+            opacity: 0,
+            y: 32,
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          });
         });
-      });
 
-      gsap.utils.toArray<HTMLElement>("[data-reveal-stagger]").forEach((el) => {
-        gsap.from(el.children, {
-          opacity: 0,
-          y: 24,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 80%" },
+        gsap.utils.toArray<HTMLElement>("[data-reveal-stagger]").forEach((el) => {
+          gsap.from(el.children, {
+            opacity: 0,
+            y: 24,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 80%" },
+          });
         });
-      });
 
-      const pinSection = document.querySelector(".pin-section");
-      if (pinSection) {
-        gsap.to(".diagram-orbit", {
-          rotate: 90,
+        const pinSection = document.querySelector(".pin-section");
+        if (pinSection) {
+          gsap.to(".diagram-orbit", {
+            rotate: 90,
+            ease: "none",
+            scrollTrigger: {
+              trigger: pinSection,
+              start: "top top",
+              end: "+=80%",
+              pin: true,
+              scrub: 1,
+            },
+          });
+          gsap.from(".diagram-label", {
+            opacity: 0,
+            stagger: 0.5,
+            scrollTrigger: {
+              trigger: pinSection,
+              start: "top top",
+              end: "+=80%",
+              scrub: 1,
+            },
+          });
+        }
+
+        gsap.from(".process-line", {
+          scaleY: 0,
+          transformOrigin: "top",
           ease: "none",
           scrollTrigger: {
-            trigger: pinSection,
-            start: "top top",
-            end: "+=80%",
-            pin: true,
+            trigger: ".process-section",
+            start: "top 70%",
+            end: "bottom 80%",
             scrub: 1,
           },
         });
-        gsap.from(".diagram-label", {
-          opacity: 0,
-          stagger: 0.5,
-          scrollTrigger: {
-            trigger: pinSection,
-            start: "top top",
-            end: "+=80%",
-            scrub: 1,
-          },
-        });
-      }
 
-      gsap.from(".process-line", {
-        scaleY: 0,
-        transformOrigin: "top",
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".process-section",
-          start: "top 70%",
-          end: "bottom 80%",
-          scrub: 1,
-        },
-      });
+        const marquee = document.querySelector<HTMLElement>(".marquee-track");
+        if (marquee) {
+          gsap.to(marquee, {
+            xPercent: -50,
+            ease: "none",
+            duration: 30,
+            repeat: -1,
+          });
+        }
+      }, root);
+    });
 
-      const marquee = document.querySelector<HTMLElement>(".marquee-track");
-      if (marquee) {
-        gsap.to(marquee, {
-          xPercent: -50,
-          ease: "none",
-          duration: 30,
-          repeat: -1,
-        });
-      }
-    }, root);
-
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(id);
+      ctx?.revert();
+    };
   }, []);
 
   return (
