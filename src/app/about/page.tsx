@@ -33,10 +33,10 @@ export default function About() {
   }, []);
 
   return (
-    <div ref={root} className="bg-bone text-ink">
+    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24">
         <p className="eyebrow text-muted-foreground">About the studio</p>
-        <h1 className="mt-5 text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl">
+        <h1 className="mt-5 text-4xl sm:text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl break-words">
           A small studio<br />
           <span className="serif-italic text-cobalt">with long memory.</span>
         </h1>

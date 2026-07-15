@@ -367,10 +367,10 @@ export default function BookingPage() {
   }
 
   return (
-    <div className="bg-bone text-ink">
+    <div className="bg-bone text-ink overflow-x-hidden">
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-10">
         <p className="eyebrow text-muted-foreground">Reserve</p>
-        <h1 className="mt-5 text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight max-w-4xl">
+        <h1 className="mt-5 text-[2.5rem] sm:text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight max-w-4xl break-words">
           Book your<br /><span className="serif-italic">appointment.</span>
         </h1>
         <p className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">

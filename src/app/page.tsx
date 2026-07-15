@@ -103,7 +103,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={root} className="bg-bone text-ink">
+    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
       <section className="relative px-4 md:px-10 pt-4 md:pt-6">
         <div className="hero-portrait relative overflow-hidden rounded-[1.75rem] w-full h-[82vh] md:h-[88vh]">
           <LuminaInteractiveList
@@ -137,7 +137,7 @@ export default function Home() {
               <span className="w-1.5 h-1.5 rounded-full bg-lime" />
               Aesthetic studio &middot; Lagos, Nigeria
             </p>
-            <h1 className="mt-5 text-white text-[2.75rem] sm:text-6xl md:text-[6rem] leading-[0.92] tracking-tight font-bold max-w-4xl">
+            <h1 className="mt-5 text-white text-3xl sm:text-6xl md:text-[6rem] leading-[0.92] tracking-tight font-bold max-w-4xl break-words">
               <SplitText as="span">Looking good,</SplitText>
               <br />
               <span className="serif-italic text-lime">
@@ -337,7 +337,7 @@ export default function Home() {
       </section>
 
       <section className="pin-section relative px-6 md:px-10 py-16 md:py-24 bg-bone overflow-hidden">
-        <div className="grid grid-cols-12 gap-10 items-center min-h-[80vh]">
+        <div className="grid grid-cols-12 gap-10 items-center md:min-h-[80vh]">
           <div data-reveal className="col-span-12 md:col-span-5">
             <img
               src={images.treatmentRoom}
@@ -350,7 +350,7 @@ export default function Home() {
             <p className="mt-4 eyebrow text-muted-foreground">The studio &middot; Suite I</p>
           </div>
 
-          <div className="col-span-12 md:col-span-7 relative flex items-center justify-center min-h-[70vh]">
+          <div className="col-span-12 md:col-span-7 relative flex items-center justify-center md:min-h-[70vh]">
             <svg viewBox="0 0 600 600" className="diagram-orbit absolute inset-0 m-auto w-full max-w-[520px] h-auto">
               <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeOpacity="0.25" strokeDasharray="2 6" />
               <circle cx="300" cy="40" r="3" fill="var(--blush)" />
@@ -392,7 +392,7 @@ export default function Home() {
       </section>
 
       <section className="bg-ink text-bone py-8 overflow-hidden border-t border-bone/10">
-        <div className="marquee-track flex gap-16 whitespace-nowrap serif-italic text-5xl md:text-7xl">
+        <div className="marquee-track flex gap-8 md:gap-16 whitespace-nowrap serif-italic text-2xl md:text-5xl lg:text-7xl">
           {Array.from({ length: 2 }).map((_, i) => (
             <span key={i} className="flex items-center gap-16">
               <span>Looking good</span>
@@ -418,7 +418,7 @@ export default function Home() {
           <div className="process-line absolute left-1/2 top-0 bottom-0 w-px bg-blush hidden md:block" />
           <div data-reveal-stagger className="space-y-16">
             {process.map((p, i) => (
-              <div key={p.n} className={`grid grid-cols-12 gap-6 items-start ${i % 2 ? "md:text-left" : "md:text-right"}`}>
+              <div key={p.n} className={`grid grid-cols-12 gap-6 items-start text-left ${i % 2 ? "md:text-left" : "md:text-right"}`}>
                 <div className={`col-span-12 md:col-span-5 ${i % 2 ? "md:col-start-8" : ""}`}>
                   <p className="serif-italic text-blush">{p.n}</p>
                   <h3 className="mt-1 text-2xl md:text-3xl font-semibold">{p.label}</h3>

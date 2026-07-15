@@ -24,12 +24,12 @@ export default function TreatmentsIndex() {
   }, []);
 
   return (
-    <div ref={root} className="bg-bone text-ink">
+    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12 md:pb-16 border-b border-hairline">
         <div className="grid grid-cols-12 gap-8 items-end">
           <div className="col-span-12 md:col-span-8">
             <p className="eyebrow text-muted-foreground">Catalog</p>
-            <h1 className="mt-5 text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight">
+            <h1 className="mt-5 text-[2.5rem] sm:text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight break-words">
               Bespoke <span className="serif-italic text-cobalt">rituals.</span><br />
               Tailored for <span className="serif-italic text-forest">your skin.</span>
             </h1>
@@ -44,7 +44,7 @@ export default function TreatmentsIndex() {
       </section>
 
       <section className="px-6 md:px-10 py-4 border-b border-hairline overflow-x-auto whitespace-nowrap scrollbar-none bg-bone/50 sticky top-16 z-40 backdrop-blur-md">
-        <div className="flex gap-4 md:gap-6">
+        <div className="flex gap-4 md:gap-6 justify-center md:justify-start">
           {categories.map((cat) => (
             <Link
               key={cat.slug}

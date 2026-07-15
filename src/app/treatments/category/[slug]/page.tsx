@@ -29,7 +29,7 @@ export default function CategoryPage() {
     }).format(price);
 
   return (
-    <div className="bg-bone text-ink">
+    <div className="bg-bone text-ink overflow-x-hidden">
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-8 border-b border-hairline">
         <Link
           href="/treatments"
