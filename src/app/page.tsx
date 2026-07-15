@@ -342,7 +342,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pin-section relative px-6 md:px-10 py-16 md:py-24 bg-bone overflow-hidden">
+      <section className="pin-section relative px-6 md:px-10 py-16 md:py-24 bg-bone overflow-hidden hidden md:block">
         <div className="grid grid-cols-12 gap-10 items-center md:min-h-[80vh]">
           <div data-reveal className="col-span-12 md:col-span-5">
             <img
