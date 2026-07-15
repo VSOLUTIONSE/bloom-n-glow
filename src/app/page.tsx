@@ -112,20 +112,20 @@ export default function Home() {
               {
                 title: "The Studio",
                 description:
-                  "A private sanctuary in the Arts District - physician-led aesthetics by appointment only.",
-                video: "https://zecdvcub3srmcwgz.public.blob.vercel-storage.com/Video%20Project%203.mp4",
+                  "A private sanctuary in Lagos - physician-led aesthetics, by appointment only.",
+                video: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663032301987/QsQbGqZkPzLrnzwA.mp4",
               },
               {
-                title: "Treatment Ritual",
+                title: "Soothing Spa Treatment",
                 description:
-                  "Every session begins with quiet - a bespoke protocol written for one face only.",
-                video: "https://zecdvcub3srmcwgz.public.blob.vercel-storage.com/Video%20Project%203%20%281%29.mp4",
+                  "Every session begins with quiet - a protocol written for one face only.",
+                video: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663032301987/DyFINPJKcGnGYTkM.mp4",
               },
               {
-                title: "The Apothecary",
+                title: "Soothing Spa Treatment",
                 description:
-                  "Clinical-grade serums and post-treatment care - formulated to extend results between visits.",
-                video: "https://zecdvcub3srmcwgz.public.blob.vercel-storage.com/Video%20Project%203%20%282%29.mp4",
+                  "Clinical-grade serums and post-treatment care, formulated to extend your results between visits.",
+                video: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663032301987/xtEanIQgYsfqQRJf.mp4",
               },
             ]}
           />
@@ -146,14 +146,13 @@ export default function Home() {
             </h1>
             <div className="mt-7 flex flex-wrap items-end justify-between gap-6 pointer-events-auto">
               <p className="hero-paragraph text-sm md:text-base leading-[1.6] text-bone/85 max-w-md">
-                Lagos&apos; most private studio for the discerning. Physician-led plans
-                across facial architecture, precision injectables, laser renewal for
-                melanin-rich skin, and bespoke wellness - every protocol written
-                for one face only.
+                Lagos&apos; most private studio. Physician-led facials, injectables,
+                laser for melanin-rich skin, and wellness - every treatment
+                designed for one face only.
               </p>
               <div className="hero-cta">
                 <MagneticButton to="/booking" variant="lime">
-                  Book a consultation
+                  Book appointment
                 </MagneticButton>
               </div>
             </div>
@@ -438,17 +437,17 @@ export default function Home() {
         <div data-reveal className="bg-lime text-lime-ink rounded-[1.75rem] overflow-hidden">
           <div className="grid grid-cols-12 items-center">
             <div className="col-span-12 md:col-span-7 p-8 md:p-16">
-              <p className="eyebrow">Begin</p>
+              <p className="eyebrow">Your first visit</p>
               <h2 className="mt-4 text-5xl md:text-7xl leading-[0.95] font-bold tracking-tight">
-                Estimate<br />your plan
+                Let&apos;s<br />map a plan
               </h2>
               <p className="mt-6 max-w-md text-sm md:text-base leading-relaxed">
-                A sixty-minute consultation. A written multi-session plan with
-                cost, cadence, and milestones. No pressure to book.
+                We&apos;ll sit down together, understand your skin, and write a
+                plan that fits your life - no pressure, no rush.
               </p>
               <div className="mt-8">
                 <MagneticButton to="/booking" variant="ink">
-                  Begin your consultation
+                  Book appointment
                 </MagneticButton>
               </div>
             </div>
