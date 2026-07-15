@@ -135,7 +135,7 @@ export default function TreatmentsIndex() {
           href="/booking"
           className="mt-6 inline-flex items-center gap-2 text-[0.72rem] tracking-[0.2em] uppercase border-b border-ink pb-1 hover:text-blush hover:border-blush transition-colors"
         >
-          Book a consultation <span>&rarr;</span>
+          Book appointment <span>&rarr;</span>
         </Link>
       </section>
     </div>

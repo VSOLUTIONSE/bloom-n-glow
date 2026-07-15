@@ -22,7 +22,7 @@ export function SiteFooter() {
               href="/booking"
               className="inline-flex items-center rounded-full bg-lime text-lime-ink px-8 py-4 text-[0.78rem] font-bold tracking-[0.16em] uppercase hover:bg-bone transition-colors"
             >
-              Book a consultation
+              Book appointment
             </Link>
           </div>
 
