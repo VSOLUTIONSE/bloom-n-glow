@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="px-6 md:px-10 pb-6">
-      <div className="relative overflow-hidden rounded-[2rem] bg-cobalt text-bone">
+    <footer className="px-4 md:px-10 pb-4 md:pb-6">
+      <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2rem] bg-cobalt text-bone">
         <div
           className="absolute inset-0 opacity-[0.12] pointer-events-none"
           style={{
@@ -12,23 +12,23 @@ export function SiteFooter() {
             backgroundSize: "18px 18px",
           }}
         />
-        <div className="relative px-6 md:px-14 pt-16 md:pt-20 pb-10">
+        <div className="relative px-4 md:px-14 pt-12 md:pt-20 pb-8 md:pb-10">
           <p className="eyebrow text-bone/70 text-center">Stay in the glow</p>
-          <h2 className="serif-italic mt-3 text-center text-4xl sm:text-5xl md:text-7xl leading-[0.95]">
+          <h2 className="serif-italic mt-3 text-center text-3xl sm:text-5xl md:text-7xl leading-[0.95]">
             Your new favorite<br />notification
           </h2>
-          <div className="mt-9 flex justify-center">
+          <div className="mt-6 md:mt-9 flex justify-center">
             <Link
               href="/booking"
-              className="inline-flex items-center rounded-full bg-lime text-lime-ink px-8 py-4 text-[0.78rem] font-bold tracking-[0.16em] uppercase hover:bg-bone transition-colors"
+              className="inline-flex items-center rounded-full bg-lime text-lime-ink px-6 md:px-8 py-3.5 md:py-4 text-[0.72rem] md:text-[0.78rem] font-bold tracking-[0.16em] uppercase hover:bg-bone transition-colors"
             >
               Book appointment
             </Link>
           </div>
 
-          <div className="h-px bg-bone/15 my-14" />
+          <div className="h-px bg-bone/15 my-10 md:my-14" />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-[0.72rem] tracking-[0.18em] uppercase text-bone/70">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-[0.72rem] tracking-[0.18em] uppercase text-bone/70">
             <div className="space-y-3">
               <p className="text-bone/45">Studio</p>
               <Link href="/about" className="block hover:text-bone">About</Link>

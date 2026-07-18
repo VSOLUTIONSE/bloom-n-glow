@@ -30,18 +30,18 @@ export default function TreatmentsIndex() {
   }, []);
 
   return (
-    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
-      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12 md:pb-16 border-b border-hairline">
-        <div className="grid grid-cols-12 gap-8 items-end">
+    <div ref={root} className="bg-bone text-ink">
+      <section className="px-4 md:px-10 pt-16 md:pt-24 pb-12 md:pb-16 border-b border-hairline">
+        <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
           <div className="col-span-12 md:col-span-8">
             <p className="eyebrow text-muted-foreground">Catalog</p>
-            <h1 className="mt-5 text-[2.5rem] sm:text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight break-words">
+            <h1 className="mt-5 text-[2rem] sm:text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight break-words">
               Bespoke <span className="serif-italic text-cobalt">rituals.</span><br />
               Tailored for <span className="serif-italic text-forest">your skin.</span>
             </h1>
           </div>
           <div className="col-span-12 md:col-span-4 md:pb-4">
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Explore our comprehensive range of medical aesthetics and classic spa therapies.
               Browse by category or select individual treatments to build your custom session.
             </p>
@@ -49,8 +49,8 @@ export default function TreatmentsIndex() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-4 border-b border-hairline overflow-x-auto whitespace-nowrap scrollbar-none bg-bone/50 sticky top-16 z-40 backdrop-blur-md">
-        <div className="flex gap-4 md:gap-6 justify-center md:justify-start">
+      <section className="px-4 md:px-10 py-4 border-b border-hairline overflow-x-auto whitespace-nowrap scrollbar-none bg-bone/50 sticky top-16 z-40 backdrop-blur-md">
+        <div className="flex gap-3 md:gap-6 justify-start">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
@@ -63,14 +63,14 @@ export default function TreatmentsIndex() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-6 border-b border-hairline">
+      <section className="px-4 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-4 md:gap-6 border-b border-hairline">
         <img
           src={images.treatmentRoom}
           alt="Inside the studio"
           width={900}
           height={520}
           loading="lazy"
-          className="col-span-12 md:col-span-8 w-full h-[24vh] md:h-[32vh] object-cover rounded-2xl"
+          className="col-span-12 md:col-span-8 w-full h-[20vh] md:h-[32vh] object-cover rounded-2xl"
         />
         <img
           src={images.ctaObject}
@@ -78,13 +78,13 @@ export default function TreatmentsIndex() {
           width={480}
           height={520}
           loading="lazy"
-          className="col-span-12 md:col-span-4 w-full h-[24vh] md:h-[32vh] object-cover rounded-2xl"
+          className="col-span-12 md:col-span-4 w-full h-[16vh] md:h-[32vh] object-cover rounded-2xl"
         />
       </section>
 
       {/* Category Grid */}
-      <section className="cat-grid px-6 md:px-10 py-16 md:py-20">
-        <div className="grid grid-cols-12 gap-6 md:gap-8">
+      <section className="cat-grid px-4 md:px-10 py-16 md:py-20">
+        <div className="grid grid-cols-12 gap-4 md:gap-8">
           {categories.map((cat, i) => {
             const catImages = [
               images.treatmentFacial,
@@ -109,16 +109,16 @@ export default function TreatmentsIndex() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
                     <p className="eyebrow text-bone/70 text-[0.6rem]">
                       Category {String(i + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="mt-2 text-2xl md:text-3xl font-bold text-bone leading-tight">
+                    <h3 className="mt-2 text-xl md:text-3xl font-bold text-bone leading-tight break-words">
                       {cat.name === "Spa, Massages, and Body Contouring"
                         ? "Spa & Body"
                         : cat.name}
                     </h3>
-                    <p className="mt-2 text-xs text-bone/70 leading-relaxed max-w-xs line-clamp-2">
+                    <p className="mt-2 text-xs text-bone/70 leading-relaxed line-clamp-2">
                       {cat.description}
                     </p>
                     <span className="mt-4 inline-flex items-center text-[0.65rem] font-bold tracking-[0.16em] uppercase text-lime border-b border-lime pb-0.5 group-hover:border-blush group-hover:text-blush transition-colors">
@@ -132,7 +132,7 @@ export default function TreatmentsIndex() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-20 text-center border-t border-hairline">
+      <section className="px-4 md:px-10 py-20 text-center border-t border-hairline">
         <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
           Looking for a custom combination of treatments? Build your session from
           individual services and pay securely.

@@ -29,25 +29,25 @@ export default function CategoryPage() {
     }).format(price);
 
   return (
-    <div className="bg-bone text-ink overflow-x-hidden">
-      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-8 border-b border-hairline">
+    <div className="bg-bone text-ink">
+      <section className="px-4 md:px-10 pt-16 md:pt-24 pb-8 border-b border-hairline">
         <Link
           href="/treatments"
           className="eyebrow text-muted-foreground hover:text-ink inline-flex items-center gap-2 mb-6"
         >
           &larr; All categories
         </Link>
-        <div className="grid grid-cols-12 gap-6 items-end">
+        <div className="grid grid-cols-12 gap-4 md:gap-6 items-end">
           <div className="col-span-12 md:col-span-8">
             <p className="eyebrow text-muted-foreground">Category</p>
-            <h1 className="mt-4 text-4xl md:text-6xl leading-[0.95] tracking-tight break-words">
+            <h1 className="mt-4 text-3xl md:text-6xl leading-[0.95] tracking-tight break-words">
               {category.name}
             </h1>
-            <p className="mt-4 text-base text-muted-foreground max-w-xl leading-relaxed">
+            <p className="mt-3 md:mt-4 text-sm md:text-base text-muted-foreground max-w-xl leading-relaxed">
               {category.description}
             </p>
           </div>
-          <div className="col-span-12 md:col-span-4 text-right">
+          <div className="col-span-12 md:col-span-4 text-left md:text-right">
             <p className="text-xs text-muted-foreground">
               {items.length} {items.length === 1 ? "treatment" : "treatments"}
             </p>
@@ -61,12 +61,12 @@ export default function CategoryPage() {
             key={t.slug}
             className="t-row group border-b border-hairline hover:bg-secondary/30 transition-colors"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 px-6 md:px-10 py-6 md:py-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 md:gap-6 px-4 md:px-10 py-5 md:py-8">
               <Link
                 href={`/treatments/${t.slug}`}
-                className="flex items-center gap-6 md:gap-8 flex-1 min-w-0"
+                className="flex items-center gap-4 md:gap-8 flex-1 min-w-0"
               >
-                <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 bg-muted">
+                <div className="w-14 h-14 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 bg-muted">
                   <img
                     src={t.image}
                     alt={t.name}
@@ -76,24 +76,16 @@ export default function CategoryPage() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="grid grid-cols-12 gap-4 items-center flex-1 min-w-0">
-                  <div className="col-span-12 md:col-span-6">
-                    <span className="serif-italic text-blush text-xs block mb-1">{t.number}</span>
-                    <h2 className="text-xl md:text-2xl font-semibold truncate text-ink">{t.name}</h2>
-                  </div>
-                  <div className="hidden md:block col-span-4 text-sm text-muted-foreground font-normal pr-4 truncate">
-                    {t.tagline}
-                  </div>
-                  <div className="hidden md:block col-span-2 text-xs tracking-[0.18em] uppercase text-muted-foreground">
-                    {t.duration}
-                  </div>
+                <div className="flex-1 min-w-0">
+                  <span className="serif-italic text-blush text-xs block mb-0.5">{t.number}</span>
+                  <h2 className="text-base md:text-2xl font-semibold truncate text-ink">{t.name}</h2>
                 </div>
               </Link>
 
-              <div className="flex items-center justify-between sm:justify-end gap-6 shrink-0 pt-3 sm:pt-0 border-t border-hairline sm:border-0">
+              <div className="flex items-center justify-between sm:justify-end gap-4 md:gap-6 shrink-0 pt-3 sm:pt-0 border-t border-hairline sm:border-0">
                 <div className="text-left sm:text-right">
                   <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Investment</p>
-                  <p className="serif-italic text-xl md:text-2xl text-ink font-medium mt-0.5">
+                  <p className="serif-italic text-lg md:text-2xl text-ink font-medium mt-0.5">
                     {formatPrice(t.price)}
                   </p>
                 </div>
@@ -102,7 +94,7 @@ export default function CategoryPage() {
                     e.preventDefault();
                     addToCart(t);
                   }}
-                  className="rounded-full bg-ink px-6 py-3 text-[0.65rem] font-bold tracking-[0.16em] uppercase text-bone hover:bg-lime hover:text-lime-ink transition-colors shadow-sm"
+                  className="rounded-full bg-ink px-5 md:px-6 py-2.5 md:py-3 text-[0.6rem] md:text-[0.65rem] font-bold tracking-[0.16em] uppercase text-bone hover:bg-lime hover:text-lime-ink transition-colors shadow-sm"
                 >
                   Add to Cart
                 </button>
@@ -112,7 +104,7 @@ export default function CategoryPage() {
         ))}
       </section>
 
-      <section className="px-6 md:px-10 py-20 text-center">
+      <section className="px-4 md:px-10 py-16 md:py-20 text-center">
         <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
           Looking for something not listed? Our consultations cover the full
           spectrum of custom aesthetic medicine.

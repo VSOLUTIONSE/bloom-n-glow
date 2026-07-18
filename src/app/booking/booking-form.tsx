@@ -367,35 +367,35 @@ export default function BookingPage() {
   }
 
   return (
-    <div className="bg-bone text-ink overflow-x-hidden">
-      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-10">
+    <div className="bg-bone text-ink">
+      <section className="px-4 md:px-10 pt-16 md:pt-24 pb-8 md:pb-10">
         <p className="eyebrow text-muted-foreground">Reserve</p>
-        <h1 className="mt-5 text-[2.5rem] sm:text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight max-w-4xl break-words">
+        <h1 className="mt-5 text-[2rem] sm:text-5xl md:text-[6.5rem] leading-[0.95] tracking-tight max-w-4xl break-words">
           Book your<br /><span className="serif-italic">appointment.</span>
         </h1>
-        <p className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
+        <p className="mt-6 md:mt-8 max-w-xl text-sm md:text-lg text-muted-foreground leading-relaxed">
           Choose your preferred window. All sessions are held
           in our private studio in Lagos.
         </p>
       </section>
 
-      <section className="px-6 md:px-10 pb-8">
-        <div className="grid grid-cols-12 gap-6 items-stretch">
+      <section className="px-4 md:px-10 pb-8">
+        <div className="grid grid-cols-12 gap-4 md:gap-6 items-stretch">
           <img
             src={images.treatmentRoom}
             alt="Inside the studio"
             width={900}
             height={520}
             loading="lazy"
-            className="col-span-12 md:col-span-7 w-full h-[28vh] md:h-[40vh] object-cover rounded-2xl"
+            className="col-span-12 md:col-span-7 w-full h-[24vh] md:h-[40vh] object-cover rounded-2xl"
           />
           <div className="col-span-12 md:col-span-5 flex flex-col justify-center">
-            <p className="text-2xl md:text-4xl leading-[1.15]">
+            <p className="text-xl md:text-4xl leading-[1.15]">
               A private room, <span className="serif-italic text-cobalt">good light,</span>{" "}
               and a specialist who has done this{" "}
               <span className="serif-italic text-forest">exactly once before</span> - the way you like it.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground max-w-sm">
+            <p className="mt-4 md:mt-6 text-sm text-muted-foreground max-w-sm leading-relaxed">
               Every appointment is held one-on-one, by invitation, in the same
               studio you see here.
             </p>
@@ -403,10 +403,10 @@ export default function BookingPage() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-10 md:py-14 border-t border-hairline">
-        <form onSubmit={onSubmit} className="grid grid-cols-12 gap-x-6 md:gap-x-10 gap-y-8 max-w-5xl">
+      <section className="px-4 md:px-10 py-10 md:py-14 border-t border-hairline">
+        <form onSubmit={onSubmit} className="grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-6 md:gap-y-8 max-w-5xl">
           {/* Cart Summary */}
-          <div className="col-span-12 border border-hairline rounded-2xl p-6 md:p-8 bg-secondary/20">
+          <div className="col-span-12 border border-hairline rounded-2xl p-4 md:p-8 bg-secondary/20">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <p className="eyebrow text-muted-foreground">Your Cart</p>

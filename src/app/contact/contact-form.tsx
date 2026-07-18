@@ -67,37 +67,37 @@ export default function Contact() {
   };
 
   return (
-    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
-      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-12">
+    <div ref={root} className="bg-bone text-ink">
+      <section className="px-4 md:px-10 pt-16 md:pt-24 pb-10 md:pb-12">
         <p className="c-rise eyebrow text-muted-foreground">Begin</p>
-        <h1 className="c-rise mt-5 text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl break-words">
+        <h1 className="c-rise mt-5 text-[2rem] sm:text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl break-words">
           A sixty-minute<br /><span className="serif-italic text-cobalt">consultation.</span>
         </h1>
-        <p className="c-rise mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
+        <p className="c-rise mt-6 md:mt-8 max-w-xl text-sm md:text-lg text-muted-foreground leading-relaxed">
           Tell us a little about what you&apos;re considering. We&apos;ll respond within
           one business day with available consultation windows. No pressure
           to book.
         </p>
       </section>
 
-      <section className="c-rise px-6 md:px-10 pb-4">
+      <section className="c-rise px-4 md:px-10 pb-4">
         <img
           src={images.treatmentRoom}
           alt="A quiet corner of the studio"
           width={1600}
           height={640}
           loading="lazy"
-          className="w-full h-[32vh] md:h-[40vh] object-cover rounded-2xl"
+          className="w-full h-[28vh] md:h-[40vh] object-cover rounded-2xl"
         />
       </section>
 
-      <section className="px-6 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-10 border-t border-hairline">
+      <section className="px-4 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-8 md:gap-10 border-t border-hairline">
         <div className="col-span-12 md:col-span-7">
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
             <input type="hidden" name="subject" value="New Bloom & Glow enquiry" />
             <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <Field name="name" label="Your name" required />
               <Field name="email" label="Email" type="email" required />
             </div>
@@ -108,13 +108,13 @@ export default function Contact() {
               <label className="eyebrow text-muted-foreground">Tell us more</label>
               <textarea
                 name="message"
-                rows={5}
+                rows={4}
                 required
-                className="mt-3 w-full bg-transparent border-b border-hairline focus:border-ink outline-none py-3 resize-none"
+                className="mt-3 w-full bg-transparent border-b border-hairline focus:border-ink outline-none py-3 resize-none text-sm md:text-base"
               />
             </div>
 
-            <div className="pt-4 flex items-center gap-6 flex-wrap">
+            <div className="pt-2 md:pt-4 flex items-center gap-4 md:gap-6 flex-wrap">
               <MagneticButton variant="ink" disabled={status === "sending"}>
                 {status === "sending" ? "Sending\u2026" : "Send enquiry"}
               </MagneticButton>
@@ -123,7 +123,7 @@ export default function Contact() {
           </form>
         </div>
 
-        <aside className="col-span-12 md:col-span-4 md:col-start-9 space-y-10 md:pt-2">
+        <aside className="col-span-12 md:col-span-4 md:col-start-9 space-y-8 md:space-y-10">
           <img
             src={images.treatmentSkin}
             alt="Studio apothecary detail"
@@ -134,7 +134,7 @@ export default function Contact() {
           />
           <div>
             <p className="eyebrow text-muted-foreground">Studio</p>
-            <p className="mt-3 serif-italic text-2xl leading-snug text-forest">
+            <p className="mt-3 serif-italic text-xl md:text-2xl leading-snug text-forest">
               14B Adeola Odeku Street<br />
               Victoria Island, Lagos
             </p>
@@ -142,7 +142,7 @@ export default function Contact() {
           </div>
           <div>
             <p className="eyebrow text-muted-foreground">Direct</p>
-            <a href="mailto:hello@bloomandglow.ng" className="mt-3 block serif-italic text-xl text-blush hover:text-ink transition-colors">
+            <a href="mailto:hello@bloomandglow.ng" className="mt-3 block serif-italic text-lg md:text-xl text-blush hover:text-ink transition-colors">
               hello@bloomandglow.ng
             </a>
             <a href="tel:+2349000000000" className="mt-2 block text-sm text-muted-foreground hover:text-ink transition-colors">

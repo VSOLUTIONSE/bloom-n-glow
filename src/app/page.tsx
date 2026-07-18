@@ -109,7 +109,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
+    <div ref={root} className="bg-bone text-ink">
       <section className="relative px-4 md:px-10 pt-12 md:pt-10">
         <div className="hero-portrait relative overflow-hidden rounded-[1.75rem] w-full h-[60vh] md:h-[88vh]">
           <LuminaInteractiveList
@@ -143,14 +143,14 @@ export default function Home() {
               <span className="w-1.5 h-1.5 rounded-full bg-lime" />
               Aesthetic studio &middot; Lagos, Nigeria
             </p>
-            <h1 className="mt-5 text-white text-3xl sm:text-6xl md:text-[6rem] leading-[0.92] tracking-tight font-bold max-w-4xl break-words">
+            <h1 className="mt-5 text-white text-[1.8rem] sm:text-6xl md:text-[6rem] leading-[0.92] tracking-tight font-bold max-w-4xl break-words">
               <SplitText as="span">Looking good,</SplitText>
               <br />
               <span className="serif-italic text-lime">
                 <SplitText as="span">on repeat.</SplitText>
               </span>
             </h1>
-            <div className="mt-7 flex flex-wrap items-end justify-between gap-6 pointer-events-auto">
+            <div className="mt-5 md:mt-7 flex flex-wrap items-end justify-between gap-4 md:gap-6 pointer-events-auto">
               <p className="hero-paragraph text-sm md:text-base leading-[1.6] text-bone/85 max-w-md">
                 Lagos&apos; most private studio. Physician-led facials, injectables,
                 laser for melanin-rich skin, and wellness - every treatment
@@ -167,13 +167,13 @@ export default function Home() {
       </section>
 
       <section id="compliments" className="px-4 md:px-10 pt-10 md:pt-14 pb-14 md:pb-20">
-        <div className="rounded-[1.75rem] bg-lime text-lime-ink px-6 md:px-12 py-12 md:py-16">
+        <div className="rounded-[1.75rem] bg-lime text-lime-ink px-4 md:px-12 py-10 md:py-16">
           <p className="eyebrow text-center text-lime-ink/60">Our regulars say it best</p>
-          <h2 className="mt-4 text-center text-3xl sm:text-5xl md:text-6xl leading-[1.02] font-bold tracking-tight">
+          <h2 className="mt-4 text-center text-3xl sm:text-5xl md:text-6xl leading-[1.02] font-bold tracking-tight break-words">
             Compliments, incoming.
           </h2>
 
-          <div data-reveal-stagger className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+          <div data-reveal-stagger className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
             {treatments.slice(0, 4).map((t) => (
               <Link
                 key={t.slug}
@@ -199,8 +199,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-16 md:py-20 border-t border-hairline">
-        <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14">
+      <section className="px-4 md:px-10 py-16 md:py-20 border-t border-hairline">
+        <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-14">
           {values.map((v) => (
             <div key={v.label} className="space-y-3">
               <div className="w-9 h-9 rounded-full bg-blush/10 border border-blush flex items-center justify-center">
@@ -213,20 +213,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-20 md:py-28">
+      <section className="px-4 md:px-10 py-20 md:py-28">
         <div data-reveal className="max-w-3xl mx-auto text-center">
           <p className="eyebrow text-muted-foreground">The premise</p>
-          <h2 className="mt-5 text-4xl md:text-6xl leading-[1.05] tracking-tight font-bold">
+          <h2 className="mt-5 text-3xl md:text-6xl leading-[1.05] tracking-tight font-bold break-words">
             Most <span className="serif-italic text-blush">skincare</span> fails<br />
             before results begin
           </h2>
         </div>
 
-        <div data-reveal-stagger className="mt-16 md:mt-20 max-w-4xl mx-auto divide-y divide-hairline">
+        <div data-reveal-stagger className="mt-12 md:mt-20 max-w-4xl mx-auto divide-y divide-hairline">
           {problems.map((p) => (
-            <div key={p.n} className="grid grid-cols-12 gap-6 py-7 items-start">
+            <div key={p.n} className="grid grid-cols-12 gap-4 md:gap-6 py-6 md:py-7 items-start">
               <div className="col-span-2 md:col-span-1 serif-italic text-blush text-lg">{p.n}</div>
-              <h3 className="col-span-10 md:col-span-5 text-lg md:text-xl leading-snug font-semibold">{p.title}</h3>
+              <h3 className="col-span-10 md:col-span-5 text-base md:text-xl leading-snug font-semibold">{p.title}</h3>
               <p className="col-span-12 md:col-span-6 text-sm md:text-[0.95rem] leading-relaxed text-muted-foreground">
                 {p.body}
               </p>
@@ -235,23 +235,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="bestsellers" className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
-        <div data-reveal className="flex flex-wrap items-end justify-between gap-6 mb-12 md:mb-16">
+      <section id="bestsellers" className="px-4 md:px-10 py-20 md:py-28 border-t border-hairline">
+        <div data-reveal className="flex flex-wrap items-end justify-between gap-4 md:gap-6 mb-8 md:mb-16">
           <div>
             <p className="eyebrow text-muted-foreground">Most booked</p>
-            <h2 className="mt-4 text-4xl md:text-6xl leading-[0.98] tracking-tight font-bold">
+            <h2 className="mt-4 text-3xl md:text-6xl leading-[0.98] tracking-tight font-bold">
               Bestsellers
             </h2>
           </div>
           <Link
             href="/treatments"
-            className="inline-flex items-center gap-2 rounded-full border border-ink px-5 py-2.5 text-[0.72rem] font-bold tracking-[0.16em] uppercase hover:bg-ink hover:text-bone transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-ink px-4 md:px-5 py-2 text-[0.65rem] md:text-[0.72rem] font-bold tracking-[0.16em] uppercase hover:bg-ink hover:text-bone transition-colors"
           >
             View all treatments &rarr;
           </Link>
         </div>
 
-        <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-6">
           {treatments.slice(0, 13).map((t) => (
             <Link
               key={t.slug}
@@ -290,8 +290,8 @@ export default function Home() {
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 flex items-center px-6 md:px-14">
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[0.95] tracking-tight max-w-2xl">
+          <div className="absolute inset-0 flex items-center px-4 md:px-14">
+            <h2 className="text-3xl sm:text-6xl md:text-7xl font-bold leading-[0.95] tracking-tight max-w-2xl break-words">
               Glow, glow,<br />and glow.
             </h2>
           </div>
@@ -309,32 +309,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="testimonials" className="bg-forest text-bone px-6 md:px-10 py-20 md:py-28">
-        <div data-reveal className="text-center mb-14">
+      <section id="testimonials" className="bg-forest text-bone px-4 md:px-10 py-20 md:py-28">
+        <div data-reveal className="text-center mb-10 md:mb-14">
           <p className="eyebrow text-bone/60">Don&apos;t gatekeep the glow</p>
-          <h2 className="mt-4 text-4xl md:text-6xl leading-[1.02] tracking-tight font-bold">
+          <h2 className="mt-4 text-3xl md:text-6xl leading-[1.02] tracking-tight font-bold">
             Words from the chair
           </h2>
         </div>
 
-        <div data-reveal-stagger className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div data-reveal-stagger className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
           {team.slice(0, 2).map((m, i) => (
-            <div key={m.name} className="bg-bone/5 border border-bone/10 rounded-2xl p-8 md:p-10">
-              <div className="flex items-center gap-4 mb-6">
+            <div key={m.name} className="bg-bone/5 border border-bone/10 rounded-2xl p-6 md:p-10">
+              <div className="flex items-center gap-4 mb-4 md:mb-6">
                 <img
                   src={m.image}
                   alt={m.name}
                   loading="lazy"
                   width={64}
                   height={64}
-                  className="w-14 h-14 rounded-full object-cover"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover"
                 />
                 <div>
                   <p className="font-semibold">{m.name}</p>
                   <p className="text-xs text-bone/55">{m.role}</p>
                 </div>
               </div>
-              <p className="serif-italic text-xl md:text-2xl leading-snug text-lime">
+              <p className="serif-italic text-lg md:text-2xl leading-snug text-lime">
                 {i === 0
                   ? "Bloom & Glow taught me to invest in myself - I have such clarity in my skin, I feel incredible."
                   : "Every visit gave me a little more confidence. I've never felt more like myself."}
@@ -387,12 +387,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
-        <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <section className="px-4 md:px-10 py-20 md:py-28 border-t border-hairline">
+        <div data-reveal-stagger className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
           {philosophy.map((p) => (
-            <div key={p.n} className="space-y-3">
+            <div key={p.n} className="space-y-2 md:space-y-3">
               <p className="serif-italic text-blush">{p.n}</p>
-              <h3 className="text-xl md:text-2xl font-semibold">{p.label}</h3>
+              <h3 className="text-lg md:text-2xl font-semibold">{p.label}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
             </div>
           ))}
@@ -414,22 +414,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="process-section relative px-6 md:px-10 py-20 md:py-32">
-        <div data-reveal className="max-w-3xl mx-auto text-center mb-20">
+      <section className="process-section relative px-4 md:px-10 py-20 md:py-32">
+        <div data-reveal className="max-w-3xl mx-auto text-center mb-12 md:mb-20">
           <p className="eyebrow text-muted-foreground">How it works</p>
-          <h2 className="mt-5 text-4xl md:text-6xl leading-[1.05] font-bold">
+          <h2 className="mt-5 text-3xl md:text-6xl leading-[1.05] font-bold break-words">
             Five steps. <span className="serif-italic text-blush">No shortcuts.</span>
           </h2>
         </div>
 
         <div className="relative max-w-3xl mx-auto">
           <div className="process-line absolute left-1/2 top-0 bottom-0 w-px bg-blush hidden md:block" />
-          <div data-reveal-stagger className="space-y-16">
+          <div data-reveal-stagger className="space-y-10 md:space-y-16">
             {process.map((p, i) => (
-              <div key={p.n} className={`grid grid-cols-12 gap-6 items-start text-left ${i % 2 ? "md:text-left" : "md:text-right"}`}>
+              <div key={p.n} className={`grid grid-cols-12 gap-4 md:gap-6 items-start text-left ${i % 2 ? "md:text-left" : "md:text-right"}`}>
                 <div className={`col-span-12 md:col-span-5 ${i % 2 ? "md:col-start-8" : ""}`}>
                   <p className="serif-italic text-blush">{p.n}</p>
-                  <h3 className="mt-1 text-2xl md:text-3xl font-semibold">{p.label}</h3>
+                  <h3 className="mt-1 text-xl md:text-3xl font-semibold">{p.label}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
                 </div>
                 <div className="hidden md:flex col-span-2 col-start-6 justify-center pt-2">
@@ -441,15 +441,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="consultation" className="px-6 md:px-10 pb-20 md:pb-28">
+      <section id="consultation" className="px-4 md:px-10 pb-20 md:pb-28">
         <div data-reveal className="bg-lime text-lime-ink rounded-[1.75rem] overflow-hidden">
           <div className="grid grid-cols-12 items-center">
-            <div className="col-span-12 md:col-span-7 p-8 md:p-16">
+            <div className="col-span-12 md:col-span-7 p-6 md:p-16">
               <p className="eyebrow">Your first visit</p>
-              <h2 className="mt-4 text-5xl md:text-7xl leading-[0.95] font-bold tracking-tight">
+              <h2 className="mt-4 text-4xl md:text-7xl leading-[0.95] font-bold tracking-tight break-words">
                 Let&apos;s<br />map a plan
               </h2>
-              <p className="mt-6 max-w-md text-sm md:text-base leading-relaxed">
+              <p className="mt-4 md:mt-6 max-w-md text-sm md:text-base leading-relaxed">
                 We&apos;ll sit down together, understand your skin, and write a
                 plan that fits your life - no pressure, no rush.
               </p>

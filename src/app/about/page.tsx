@@ -38,17 +38,17 @@ export default function About() {
   }, []);
 
   return (
-    <div ref={root} className="bg-bone text-ink overflow-x-hidden">
-      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24">
+    <div ref={root} className="bg-bone text-ink">
+      <section className="px-4 md:px-10 pt-16 md:pt-24 pb-12 md:pb-24">
         <p className="eyebrow text-muted-foreground">About the studio</p>
-        <h1 className="mt-5 text-4xl sm:text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl break-words">
+        <h1 className="mt-5 text-[2rem] sm:text-5xl md:text-[7rem] leading-[0.95] tracking-tight max-w-5xl break-words">
           A small studio<br />
           <span className="serif-italic text-cobalt">with long memory.</span>
         </h1>
       </section>
 
-      <section className="px-6 md:px-10 pb-20 md:pb-28">
-        <div className="grid grid-cols-12 gap-10">
+      <section className="px-4 md:px-10 pb-20 md:pb-28">
+        <div className="grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-7">
             <img
               src={images.treatmentRoom}
@@ -59,18 +59,18 @@ export default function About() {
               className="w-full aspect-[4/3] object-cover rounded-sm"
             />
           </div>
-          <div data-reveal className="col-span-12 md:col-span-5 md:pt-10 space-y-6">
-            <p className="serif-italic text-2xl md:text-3xl leading-[1.2]">
+          <div data-reveal className="col-span-12 md:col-span-5 md:pt-10 space-y-4 md:space-y-6">
+            <p className="serif-italic text-xl md:text-3xl leading-[1.2] break-words">
               Bloom & Glow was founded in 2019 by Dr. Adaeze Okonkwo after a
               decade between Lagos, London, and Johannesburg.
             </p>
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
               The brief was simple: a studio built for Nigeria - that treats fewer clients, listens
               longer, and builds plans designed to compound over a decade. No
               menu marketing, no upsells, no clients overheard from the next
               room.
             </p>
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
               Seven years later the rules have not changed. Our floor sees one
               client at a time. Every plan is written by hand. The technology
               we use is chosen, not bought because a sales representative
@@ -80,14 +80,14 @@ export default function About() {
         </div>
       </section>
 
-      <section id="philosophy" className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
-        <div data-reveal className="mb-14">
+      <section id="philosophy" className="px-4 md:px-10 py-20 md:py-28 border-t border-hairline">
+        <div data-reveal className="mb-10 md:mb-14">
           <p className="eyebrow text-muted-foreground">Philosophy</p>
-          <h2 className="mt-4 text-4xl md:text-6xl">
+          <h2 className="mt-4 text-3xl md:text-6xl break-words">
             Four <span className="serif-italic text-forest">principles.</span> No exceptions.
           </h2>
         </div>
-        <div className="grid grid-cols-12 gap-10 md:gap-12 items-start">
+        <div className="grid grid-cols-12 gap-6 md:gap-12 items-start">
           <div data-reveal className="col-span-12 md:col-span-5">
             <img
               src={images.treatmentWellness}
@@ -98,14 +98,14 @@ export default function About() {
               className="w-full aspect-[4/5] object-cover rounded-2xl"
             />
           </div>
-          <div className="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
+          <div className="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
             {philosophy.map((p) => (
-              <div data-reveal key={p.n} className="border-t border-hairline pt-6">
-                <div className="flex items-baseline gap-4">
-                  <span className="serif-italic text-blush text-xl">{p.n}</span>
-                  <h3 className="text-2xl md:text-3xl">{p.label}</h3>
+              <div data-reveal key={p.n} className="border-t border-hairline pt-5 md:pt-6">
+                <div className="flex items-baseline gap-3 md:gap-4">
+                  <span className="serif-italic text-blush text-lg md:text-xl">{p.n}</span>
+                  <h3 className="text-xl md:text-3xl">{p.label}</h3>
                 </div>
-                <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-md">
+                <p className="mt-3 md:mt-4 text-sm md:text-base text-muted-foreground leading-relaxed">
                   {p.body}
                 </p>
               </div>
@@ -114,21 +114,21 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-20 md:py-28 border-t border-hairline">
-        <div data-reveal className="mb-14 flex items-end justify-between gap-6 flex-wrap">
+      <section className="px-4 md:px-10 py-20 md:py-28 border-t border-hairline">
+        <div data-reveal className="mb-10 md:mb-14 flex items-end justify-between gap-4 md:gap-6 flex-wrap">
           <div>
             <p className="eyebrow text-muted-foreground">The floor &middot; Four practitioners</p>
-            <h2 className="mt-4 text-4xl md:text-6xl">
+            <h2 className="mt-4 text-3xl md:text-6xl break-words">
               People who <span className="serif-italic text-blush">stay.</span>
             </h2>
           </div>
-          <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
+          <p className="max-w-sm text-xs md:text-sm text-muted-foreground leading-relaxed">
             Average tenure across the team: six years. We hire slowly and
             invest deeply.
           </p>
         </div>
 
-        <div className="team-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="team-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {team.map((m) => (
             <div key={m.name} className="team-card group">
               <div className="overflow-hidden rounded-sm aspect-[3/4] bg-muted">
